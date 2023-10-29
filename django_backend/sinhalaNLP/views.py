@@ -35,7 +35,7 @@ def svct(request, id=0):
         print(text)  # Print only the value of "text"
 
     
-    nlp = spacy.load("/path/to/en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
     # Process the text
     doc = nlp(text)
@@ -134,7 +134,7 @@ def predictword(request, id=0):
         text = data.get('text', '')
         print(text) 
 
-    nlp = spacy.load("en_core_web_sm-3.7.0")
+    nlp = spacy.load("en_core_web_sm")
 
     # Process the text
     doc = nlp(text)
@@ -307,7 +307,7 @@ def textGetbyPost(request, id=0):
         text = data.get('text', '')  # Extract the value of the "text" key
         print(text)  # Print only the value of "text"
 
-    nlp = en_core_web_sm.load()
+    nlp = spacy.load("en_core_web_sm")
 
     # Process the text
     doc = nlp(text)
