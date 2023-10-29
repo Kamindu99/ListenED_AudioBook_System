@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import audio10 from '../../Audio/10.m4a'
 
 const Recommendations = () => {
 
@@ -20,6 +21,7 @@ const Recommendations = () => {
     if (UserDetails != null) {
       console.log(UserDetails);
       getRecommndbooks(UserDetails?.usehistory, UserDetails?.studyarea)
+      audioRef.current.play();
     }
     else {
       retrieveUserDetailsById(userid);
@@ -110,7 +112,7 @@ const Recommendations = () => {
 
         <audio
           ref={audioRef}
-          src='./10.m4a'
+          src={audio10}
           controls
           style={{
             width: '100%',

@@ -23,7 +23,7 @@ const AboutUs = () => {
 
   useEffect(() => {
     const audio = new Audio(yourAudioClip);
-    audio.play();
+    //audio.play();
   }, []);
 
   const synth = window.speechSynthesis;
