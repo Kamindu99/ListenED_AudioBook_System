@@ -22,7 +22,13 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from sklearn import preprocessing
 import string
 from sklearn.feature_extraction.text import TfidfVectorizer
-from nltk import word_tokenize, pos_tag
+
+import nltk
+
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
 
 @csrf_exempt
 
