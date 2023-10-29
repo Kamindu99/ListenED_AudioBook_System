@@ -24,6 +24,8 @@ import string
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 import nltk
+from nltk.tokenize import word_tokenize
+from nltk import pos_tag
 
 try:
     nltk.data.find('tokenizers/punkt')
