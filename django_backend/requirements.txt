@@ -99,7 +99,6 @@ python-dateutil==2.8.2
 python-json-logger==2.0.7
 pyttsx3==2.90
 pytz==2023.3
-pywin32==223
 PyYAML==6.0
 pyzmq==25.0.2
 qtconsole==5.4.3
