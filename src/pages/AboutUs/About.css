@@ -1,0 +1,38 @@
+/* AboutUs.css */
+
+.about-us-container {
+    background-color: #f8f9fa;
+  }
+  
+  .about-us-header {
+    /* background-image: url('header-bg.jpg');  */
+    background-size: cover;
+    color: #fff;
+    padding: 100px 0;
+    background-image: linear-gradient(to left, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+  }
+  
+  .about-us-content {
+    padding: 50px 0;
+  }
+  
+  .team-members {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .team-member {
+    text-align: center;
+  }
+  
+  .team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid #fff;
+    border-radius: 50%;
+  }
+  
+  

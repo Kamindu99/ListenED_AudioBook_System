@@ -1,0 +1,131 @@
+/* App.css */
+.homepagecss .App {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.homepagecss body {
+  /* Define your gradient here */
+  /* background: linear-gradient(to bottom, #3498db, #1abc9c); */
+
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.homepagecss .header {
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.homepagecss .navbar-brand {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.homepagecss .main-content {
+  padding: 60px 0;
+}
+
+.homepagecss .main-content h1 {
+  font-size: 36px;
+}
+
+.homepagecss .footer {
+  background-color: #FF4500;
+  color: #fff;
+  padding: 20px 0;
+}
+
+/* App.css */
+/* ... (Your existing styles) */
+
+.homepagecss .animate-fade-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: fadeInLeft 1s ease forwards;
+}
+
+.homepagecss .animate-fade-right {
+  opacity: 0;
+  transform: translateX(20px);
+  animation: fadeInRight 1s ease forwards;
+}
+
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.homepagecss .name-heading {
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  font-weight: 500;
+  color: black;
+  /* Text color */
+  /* Background color */
+  padding: 20px;
+  /* Add padding for better visual */
+  border-bottom: 2px solid #FF4500;
+  /* Orange decorative line */
+  display: inline-block;
+}
+
+
+/* Card.css */
+.homepagecss .card {
+  width: 320px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  margin: 20px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.homepagecss .card:hover {
+  transform: scale(1.05);
+}
+
+.homepagecss .card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.homepagecss .card-content {
+  padding: 16px;
+}
+
+.homepagecss .card-title {
+  font-size: 24px;
+  margin: 0;
+}
+
+.homepagecss .card-text {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.homepagecss .cardsss {
+  display: flex;
+  justify-content: space-between;
+}

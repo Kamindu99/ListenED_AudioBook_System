@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Recommendations = () => {
 
-  const userid = 1
+  const userid = 4
   const [UserDetails, setUserDetails] = useState(null);
 
   const retrieveUserDetailsById = (id) => {

@@ -12,6 +12,7 @@ import speech_recognition as sr
 import pyttsx3
 from django.shortcuts import render
 from django.http import JsonResponse
+import spacy
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
@@ -23,16 +24,6 @@ from sklearn import preprocessing
 import string
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-import nltk
-from nltk.tokenize import word_tokenize
-from nltk import pos_tag
-
-nltk.download('averaged_perceptron_tagger')
-
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt')
 
 @csrf_exempt
 
@@ -143,10 +134,10 @@ def predictword(request, id=0):
         text = data.get('text', '')
         print(text) 
 
-    words = word_tokenize(text)
-    
-    # Perform part-of-speech tagging
-    tagged_words = pos_tag(words)
+    nlp = spacy.load("en_core_web_sm")
+
+    # Process the text
+    doc = nlp(text)
 
     # Initialize lists for each part of speech
     nouns = []
@@ -155,17 +146,17 @@ def predictword(request, id=0):
     adverbs = []
 
     # Iterate over the tokens and identify parts of speech
-    for token, pos in tagged_words:
-        if pos.startswith("N"):  # Nouns
-            nouns.append(token)
-        elif pos.startswith("V"):  # Verbs
-            verbs.append(token)
-        elif pos.startswith("J"):  # Adjectives
-            adjectives.append(token)
-        elif pos.startswith("R"):  # Adverbs
-            adverbs.append(token)
+    for token in doc:
+        if token.pos_ == "NOUN":
+            nouns.append(token.text)
+        elif token.pos_ == "VERB":
+            verbs.append(token.text)
+        elif token.pos_ == "ADJ":
+            adjectives.append(token.text)
+        elif token.pos_ == "ADV":
+            adverbs.append(token.text)
 
-    print("Nouns:", nouns)
+    print("Noun phrases:", nouns)
     print("Verbs:", verbs)
     print("Adjectives:", adjectives)
     print("Adverbs:", adverbs)
@@ -225,6 +216,7 @@ def predictword(request, id=0):
 
     predicted_verbs = predict_regular_verbs(verbs)
 
+
     print(predicted_verbs)
 
     output_string = ', '.join(predicted_verbs)
@@ -234,6 +226,11 @@ def predictword(request, id=0):
     print(out)
 
     print(output_string)
+
+
+
+
+
 
     data2 = pd.read_csv('./synonym.csv')
 
@@ -270,8 +267,32 @@ def predictword(request, id=0):
 
     print(f'Synonyms for "{input_word}": {synonym_predictions}')
 
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
     # return JsonResponse([{'predicted_verbs': predicted_verbs, 'nouns' : nouns }], safe=False)
     data = {'predicted_verbs': predicted_verbs, 'nouns': nouns, "similar": synonym_predictions}
+
+
+
+
+
+
+
 
     return JsonResponse(data, safe=False)
 
@@ -286,6 +307,7 @@ def textGetbyPost(request, id=0):
         text = data.get('text', '')  # Extract the value of the "text" key
         print(text)  # Print only the value of "text"
 
+    
     nlp = spacy.load("en_core_web_sm")
 
     # Process the text
@@ -482,3 +504,4 @@ def audioBook(request, id=0):
         book = AudioBook.objects.get(bookId=id)
         book.delete()
         return JsonResponse("Deleted Succeffully!!", safe=False)
+   

@@ -104,7 +104,7 @@ function Predict() {
   //   setTranslation(translatedText);
 
   //   // Send translated data to the backend
-  //   const backendUrl = 'https://listened.onrender.com/gettext/'; // Replace with your backend API URL
+  //   const backendUrl = 'http://127.0.0.1:8000/gettext/'; // Replace with your backend API URL
 
   //   try {
   //     const backendResponse = await axios.post(backendUrl, {
@@ -146,7 +146,7 @@ function Predict() {
   };
 
   const sendTranslationToBackend = async (translatedText) => {
-    const backendUrl = "https://listened.onrender.com/predict/";
+    const backendUrl = "http://127.0.0.1:8000/predict/";
     const translatedLow = translatedText.toLowerCase();
     try {
       const backendResponse = await axios
@@ -172,11 +172,30 @@ function Predict() {
                   return;
                 }
 
-                if (responseData === "go" && nouns === "data page") {
-                  window.location.href = "/profile";
-                } else {
-                  console.log("errr");
-                  setErr(true);
+                // if (responseData === "go" && nouns === "data page") {
+                //   window.location.href = "/profile";
+                // } else {
+                //   console.log("errr");
+                //   setErr(true);
+                // }
+
+                // if (responseData === "go" && nouns === "book search") {
+                //   window.location.href = "/search";
+                // } else {
+                //   console.log("errr");
+                //   setErr(true);
+                // }
+                switch (true) {
+                  case responseData === "go" && nouns === "data page":
+                    window.location.href = "/profile";
+                    break;
+                  case responseData === "go" && nouns === "search":
+                    window.location.href = "/search";
+                    break;
+                  default:
+                    console.log("errr");
+                    setErr(true);
+                    break;
                 }
 
                 // if (responseData.length > 1) {
@@ -211,6 +230,22 @@ function Predict() {
       console.error("Error sending data to the backend:", error);
     }
   };
+
+  const handleKeyPress = (event) => {
+    if (event.key === " ") {
+      startListening();
+    }
+  };
+
+  useEffect(() => {
+    // Add an event listener for the space bar key press
+    window.addEventListener("keydown", handleKeyPress);
+
+    // Cleanup: remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
 
   return (
     <div className="App container text-center">
