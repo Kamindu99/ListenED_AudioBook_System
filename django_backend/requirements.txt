@@ -1,3 +1,5 @@
+spacy>=3.0.0,<4.0.0
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.0/en_core_web_sm-3.7.0-py3-none-any.whl#sha256=6215d71a3212690e9aec49408a27e3fe6ad7cd6c715476e93d70dc784041e93e
 asgiref==3.6.0
 dj-database-url==1.2.0
 Django==4.1.4
@@ -14,7 +16,3 @@ scikit-learn==1.2.2
 SpeechRecognition==3.10.0
 pyttsx3==2.90
 nltk==3.8.1
-spacy==3.7.2
-spacy-legacy==3.0.12
-spacy-loggers==1.0.5
-en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.0/en_core_web_sm-3.7.0-py3-none-any.whl#sha256=6215d71a3212690e9aec49408a27e3fe6ad7cd6c715476e93d70dc784041e93e
