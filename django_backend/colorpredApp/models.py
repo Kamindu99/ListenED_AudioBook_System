@@ -1,3 +1,4 @@
+
 from django.db import models
 #import uuid
 
@@ -15,3 +16,10 @@ class ManageAudioBooks(models.Model):
     author = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
     bookType = models.CharField(max_length=100)
+
+# //crete a model with userid and colors array
+class SaveColors(models.Model):
+    userid = models.CharField(max_length=100, primary_key=True)
+    colors = models.TextField()
+    overlay = models.CharField(max_length=100)
+

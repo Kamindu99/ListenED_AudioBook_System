@@ -5,9 +5,12 @@ from django.http.response import JsonResponse
 
 from colorpredApp.models import ColorInterface
 from colorpredApp.serializers import ColorInterfaceSerializer
+from colorpredApp.models import SaveColors
+from colorpredApp.serializers import SaveColorsSerializer
 
 from colorpredApp.models import ManageAudioBooks
 from colorpredApp.serializers import ManageAudioBooksSerializer
+
 
 import pandas as pd
 from sklearn.neighbors import NearestNeighbors
@@ -207,3 +210,50 @@ def manageAudioBooksApi(request, id=0):
         manageaudiobooks = ManageAudioBooks.objects.get(bookId=manageaudiobooks_data['bookId'])
         manageaudiobooks.delete()
         return JsonResponse("Deleted Succeffully!!", safe=False)
+ 
+@csrf_exempt
+def saveColorsApi(request, pk=0):
+    if request.method == 'GET':
+        savecolors = SaveColors.objects.all()
+        savecolors_serializer = SaveColorsSerializer(savecolors, many=True)
+        return JsonResponse(savecolors_serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        savecolors_data = JSONParser().parse(request)
+        savecolors_serializer = SaveColorsSerializer(data=savecolors_data)
+        if savecolors_serializer.is_valid():
+            savecolors_serializer.save()
+            return JsonResponse("Added Successfully!!", safe=False)
+        return JsonResponse(savecolors_serializer.errors, status=400)
+
+    elif request.method == 'PUT':
+        try:
+            savecolors_data = JSONParser().parse(request)
+            savecolors = SaveColors.objects.get(userid=savecolors_data['userid'])
+            savecolors_serializer = SaveColorsSerializer(savecolors, data=savecolors_data)
+            if savecolors_serializer.is_valid():
+                savecolors_serializer.save()
+                return JsonResponse("Updated Successfully!!", safe=False)
+            return JsonResponse(savecolors_serializer.errors, status=400)
+        except SaveColors.DoesNotExist:
+            return JsonResponse("SaveColors with the specified ID does not exist.", status=404)
+
+    elif request.method == 'DELETE':
+        try:
+            savecolors = SaveColors.objects.get(pk=pk)
+            savecolors.delete()
+            return JsonResponse("Deleted Successfully!!", safe=False)
+        except SaveColors.DoesNotExist:
+            return JsonResponse("SaveColors with the specified ID does not exist.", status=404)
+        
+    
+    # get by userid
+    elif request.method == 'GET':
+        try:
+            savecolors = SaveColors.objects.filter(userid=pk)
+            savecolors_serializer = SaveColorsSerializer(savecolors, many=True)
+            return JsonResponse(savecolors_serializer.data, safe=False)
+        except SaveColors.DoesNotExist:
+            return JsonResponse("SaveColors for the specified user do not exist.", status=404)
+        
+        
