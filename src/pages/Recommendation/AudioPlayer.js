@@ -22,7 +22,7 @@ const AudioPlayer = () => {
         retrieveAudioBookById(id);
     }, [id]);
 
-    const userid = 8
+    const userid = 9
 
     const updateUseHistory = async (newHistory) => {
         try {
@@ -137,11 +137,11 @@ const AudioPlayer = () => {
     }, [listening]);
 
     useEffect(() => {
-        if (spokenText === 'Play') {
+        if (spokenText === 'play') {
             playAudio();
-        } else if (spokenText === 'Stop') {
+        } else if (spokenText === 'stop') {
             stopAudio();
-        } else if (spokenText === 'Pause') {
+        } else if (spokenText === 'pause') {
             pauseAudio();
         }
     }, [spokenText]);
@@ -165,6 +165,12 @@ const AudioPlayer = () => {
                 <h1 className="container text-center" style={{ fontSize: '60px', fontWeight: '700', color: 'blue' }}>Audio Books Play පිටුව</h1>
                 <h1 className="container text-center" style={{ fontSize: '40px', fontWeight: '700', letterSpacing: '2px' }}>{AudioBooks?.title}</h1>
             </div>
+
+            {/* {spokenText && (
+                <div className='container text-center'>
+                    <p style={{ fontSize: '20px', fontWeight: '700' }}>You said: {spokenText}</p>
+                </div>
+            )} */}
             <div
                 style={{
                     display: 'flex',
