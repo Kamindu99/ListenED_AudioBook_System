@@ -86,7 +86,7 @@ const AudioPlayer = () => {
     const startVoiceRecognition = () => {
         console.log('startVoiceRecognition');
         const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'en-US'; // Set the language to Sinhala (Sri Lanka)
+        recognition.lang = 'si-LK'; // Set the language to Sinhala (Sri Lanka)
         recognition.start();
         recognition.onresult = handleSpokenText;
     };
@@ -137,9 +137,10 @@ const AudioPlayer = () => {
     }, [listening]);
 
     useEffect(() => {
+        console.log(spokenText);
         if (spokenText === 'play') {
             playAudio();
-        } else if (spokenText === 'stop') {
+        } else if (spokenText === 'නවත්වන්න' || spokenText === 'නවත්තන්න' || spokenText === 'stop' || spokenText === 'Stop') {
             stopAudio();
         } else if (spokenText === 'pause') {
             pauseAudio();
