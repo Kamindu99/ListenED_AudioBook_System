@@ -32,7 +32,7 @@ const Login = () => {
             if (e.key === "c") {
 
                 setIsLoging(true);
-                window.location.replace(`./dashboard`)
+                window.location.replace(`./`)
 
             }
             if (e.key === "x") {
@@ -71,7 +71,7 @@ const Login = () => {
 
                 let utterance = new SpeechSynthesisUtterance("Login Success");
                 speechSynthesis.speak(utterance);
-                navigate("/dashboard");
+                navigate("/");
             }
             else {
                 let utterance = new SpeechSynthesisUtterance("Login Failed");
@@ -100,7 +100,7 @@ const Login = () => {
 
                 let utterance = new SpeechSynthesisUtterance("face Login Success");
                 speechSynthesis.speak(utterance);
-                navigate("/dashboard");
+                navigate("/");
             }
             else {
                 let utterance = new SpeechSynthesisUtterance("face Login Failed");

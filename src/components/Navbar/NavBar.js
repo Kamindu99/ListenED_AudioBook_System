@@ -218,14 +218,7 @@ const Navbar = () => {
                   )
                     : (
                       <div>
-                        <li>
-                          <a
-                            className={`dropdown-item `}
-                            href="/admin"
-                          >
-                            Agent Login
-                          </a>
-                        </li>
+
                         <li>
                           <a
                             className={`dropdown-item `}
