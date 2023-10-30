@@ -8,7 +8,10 @@ from django.contrib.auth import authenticate
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from usermanagement.serializers import UserLoginSerializer
+from django.contrib.auth import authenticate, login
+from rest_framework.authtoken.models import Token
+import json
+from django.contrib.auth.hashers import check_password
 
 @csrf_exempt
 def usermanagementApi(request, id=0):
@@ -32,26 +35,43 @@ def usermanagementApi(request, id=0):
             user_serializer.save()
             return JsonResponse("Added Successfully!!", safe=False)
         return JsonResponse("Failed to Add.", safe=False)
+
+    elif request.method=='PUT':
+        user_data = JSONParser().parse(request)
+        user = UserManagementModel.objects.get(userid=user_data['userid'])
+        user_serializer = UserManagementSerializer(user, data=user_data)
+        if user_serializer.is_valid():
+            user_serializer.save()
+            return JsonResponse("Updated Successfully!!", safe=False)
+        return JsonResponse("Failed to Update.", safe=False)
+
     elif request.method=='DELETE':
         user_data = UserManagementModel.objects.get(userid=id)
         user_data.delete()
         return JsonResponse("Deleted Succeffully!!", safe=False)
 
 @csrf_exempt
-def loginapis(self, request):
-        serializer = UserLoginSerializer(data=request.data)
-        if serializer.is_valid():
-            email = serializer.validated_data['email']
-            password = serializer.validated_data['password']
-
-            # Check email and password
-            user = authenticate(request, email=email, password=password)
-
-            if user is not None:
-                login(request, user)
-                return JsonResponse("Login successful!", status=status.HTTP_200_OK)
+def login(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body.decode('utf-8'))
+            password = data.get('password')
+            
+            if password:
+                try:
+                    user = UserManagementModel.objects.get(password=password)
+                    if user:
+                        # Password matches
+                        return JsonResponse({'status': 'Login successful'})
+                    else:
+                        # Password doesn't match
+                        return JsonResponse({'error': 'Invalid login credentials'}, status=401)
+                except UserManagementModel.DoesNotExist:
+                    # User with the provided email doesn't exist
+                    return JsonResponse({'error': 'Invalid login credentials'}, status=401)
             else:
-                return JsonResponse("Login failed. Please check your credentials.", status=status.HTTP_401_UNAUTHORIZED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                return JsonResponse({'error': 'Email and password are required.'}, status=400)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON data.'}, status=400)
 
-    
+    return JsonResponse({'error': 'Invalid request method'}, status=400)

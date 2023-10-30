@@ -14,3 +14,9 @@ class UserManagementModel(models.Model):
             models.CharField(max_length=200, blank=True),
             size=8,
     )
+    colors = ArrayField(
+            models.CharField(max_length=200, blank=True),
+            size=8,
+            default=list
+    )
+    overlay = models.CharField(max_length=100, blank=True,default="None")
