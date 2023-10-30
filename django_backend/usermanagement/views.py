@@ -36,14 +36,18 @@ def usermanagementApi(request, id=0):
             return JsonResponse("Added Successfully!!", safe=False)
         return JsonResponse("Failed to Add.", safe=False)
 
-    elif request.method=='PUT':
+    elif request.method == 'PUT':
         user_data = JSONParser().parse(request)
-        user = UserManagementModel.objects.get(userid=user_data['userid'])
-        user_serializer = UserManagementSerializer(user, data=user_data)
+        try:
+            user = UserManagementModel.objects.get(userid=user_data['userid'])
+        except UserManagementModel.DoesNotExist:
+            return JsonResponse({"error": "User not found"}, status=404)
+
+        user_serializer = UserManagementSerializer(user, data=user_data, partial=True)
         if user_serializer.is_valid():
             user_serializer.save()
             return JsonResponse("Updated Successfully!!", safe=False)
-        return JsonResponse("Failed to Update.", safe=False)
+        return JsonResponse(user_serializer.errors, status=400)
 
     elif request.method=='DELETE':
         user_data = UserManagementModel.objects.get(userid=id)

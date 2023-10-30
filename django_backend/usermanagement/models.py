@@ -13,10 +13,11 @@ class UserManagementModel(models.Model):
     usehistory = ArrayField(
             models.CharField(max_length=200, blank=True),
             size=8,
+            default=list
     )
     colors = ArrayField(
             models.CharField(max_length=200, blank=True),
             size=8,
             default=list
     )
-    overlay = models.CharField(max_length=100, blank=True,default="None")
+    overlay = models.CharField(max_length=100, blank=True,default="none")
