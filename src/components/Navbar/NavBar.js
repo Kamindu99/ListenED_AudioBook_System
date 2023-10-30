@@ -94,7 +94,7 @@ const Navbar = () => {
         <div className="navbar-heading mt-2">
           <h3 style={{ marginLeft: '30px' }}>
             <a className="navbar-h ms-5" to="/">
-              <img src="https://res.cloudinary.com/dmfljlyu1/image/upload/v1694033302/listened_logo_uhmrcj.png" style={{ height: '50px' }} alt="Logo" className="logo-image me-3" />
+              <img src="https://res.cloudinary.com/dmfljlyu1/image/upload/v1698612919/logolistened_gahh2l.png" style={{ height: '50px' }} alt="Logo" className="logo-image me-3" />
               ListenEd
             </a>
           </h3>

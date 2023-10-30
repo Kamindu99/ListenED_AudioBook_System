@@ -341,13 +341,15 @@ function Home() {
                     type="image"
                     id="searchSubmit"
                     name="submit"
-                    src="https://www.flaticon.com/free-icon/active-search-symbol_34148"
+                    src="https://static.thenounproject.com/png/1376288-200.png"
                     alt="Go"
                     title="Submit Search Query"
+                    style={{ width: "100px", height: "90px", marginBottom: '-34px' }}
                   />
                 </div>
               </form>
               <p className="lead">
+                <br />
                 ශ්‍රී ලංකාවෙ පළමු කටහඬ හරහා පාලනය වන Audiobook පුස්තකාලය වෙත ඔබව
                 සාදරෙයෙන් පිලිගනිමු.
               </p>
@@ -382,7 +384,7 @@ function Home() {
             <div class="card mb-3">
               <div class="row no-gutters">
                 <div class="col-md-5">
-                  <img style={{ height: '90%' }} src="http://fhss.sjp.ac.lk/audiobooks/wp-content/uploads/sites/32/2019/11/3-326x245.png" class="card-img" alt="..." />
+                  <img style={{ height: '100%' }} src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg" class="card-img" alt="..." />
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
@@ -399,7 +401,7 @@ function Home() {
             <div class="card mb-3">
               <div class="row no-gutters">
                 <div class="col-md-5">
-                  <img style={{ height: '90%' }} src="http://fhss.sjp.ac.lk/audiobooks/wp-content/uploads/sites/32/2019/11/3-326x245.png" class="card-img" alt="..." />
+                  <img style={{ height: '100%' }} src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg" class="card-img" alt="..." />
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
@@ -416,7 +418,7 @@ function Home() {
             <div class="card mb-3">
               <div class="row no-gutters">
                 <div class="col-md-5">
-                  <img style={{ height: '90%' }} src="http://fhss.sjp.ac.lk/audiobooks/wp-content/uploads/sites/32/2019/11/3-326x245.png" class="card-img" alt="..." />
+                  <img style={{ height: '100%' }} src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg" class="card-img" alt="..." />
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">

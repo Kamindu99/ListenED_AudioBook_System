@@ -7,16 +7,17 @@ const Footer = () => {
         <div className='myfootecss'>
             <div className="">
                 <div className="card ">
-                    <div className="row mb-4">
+                    <div className="row mb-2">
                         <div className="col-md-4 col-sm-4 col-xs-4">
                             <div className="footer-text pull-left">
                                 <div className="d-flex">
                                     <h2 style={{ color: "#8ca3ba" }}> <img style={{ width: "40px", height: "40px", marginRight: "10px" }}
-                                        src="https://png.pngtree.com/png-vector/20221108/ourmid/pngtree-cartoon-train-illustration-png-image_6435933.png" />
+                                        src="https://res.cloudinary.com/dmfljlyu1/image/upload/v1698612919/logolistened_gahh2l.png" />
                                         ListenEd</h2>
                                 </div>
                                 <p className="card-text">
-                                    The main objective of the proposed train ticket online booking system is to provide for travellers in Sri Lanka
+                                    ListenEd is a Audio Book system web application that allows users to listen to audio books. The system is designed to be user friendly and easy to use. The system is designed to be user friendly and easy to use.
+
                                 </p>
                                 <div className="social mt-2 mb-3">
                                     <i className="fa fa-facebook-official fa-lg" onClick={() => { window.location.replace("https://www.facebook.com/profile.php?id=100007444869672&mibextid=LQQJ4d") }}></i>
@@ -32,8 +33,8 @@ const Footer = () => {
                             <h5 className="heading">Services</h5>
                             <ul>
                                 <li>User Management</li>
-                                <li onClick={() => { window.location.replace('/trainsList') }}>Ticket Booking</li>
-                                <li>See Trains</li>
+                                <li onClick={() => { window.location.replace('/trainsList') }}>Play Book</li>
+                                <li>See Books</li>
                                 <li>Payment</li>
                             </ul>
                         </div>
@@ -49,7 +50,7 @@ const Footer = () => {
                         <div className="col-md-2 col-sm-2 col-xs-2">
                             <h5 className="heading">Contact Us</h5>
                             <ul className="card-text">
-                                <li>Train Department</li>
+                                <li>ListenEd</li>
                                 <li>Colombo 2</li>
                                 <li>Sri Lanka</li>
                                 <li>071 5273881</li>
@@ -59,7 +60,7 @@ const Footer = () => {
                     <div className="divider mb-4"> </div>
                     <div className="row" style={{ fontSize: "10px", textAlign: "center", letterSpacing: '2px' }}>
                         <div>
-                            Designed and Developed by Train Go Team <br />
+                            Designed and Developed by ListenEd Team <br />
                         </div>
                     </div>
                 </div>
