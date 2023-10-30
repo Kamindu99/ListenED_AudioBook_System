@@ -6,5 +6,7 @@ urlpatterns = [
     path('colorinterface/<int:pk>/', views.colorInterfaceApi),
     path('predictcolor/', views.predictcolorApi),
     path('manageaudiobooks/', views.manageAudioBooksApi),
-    path('colorspred/', views.colorsPred)
+    path('colorspred/', views.colorsPred),
+    path('savecolors/', views.saveColorsApi),
+    path('savecolors/<int:pk>/', views.saveColorsApi)
 ]

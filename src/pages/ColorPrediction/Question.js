@@ -1,10 +1,67 @@
-// src/components/Question.js
 import React, { useEffect } from "react";
 
 function Question({ question, image, answers, onSelect }) {
   useEffect(() => {
     console.log(image);
+
+    const handleKeyPress = (e) => {
+      if (e.key === "n") {
+        startVoiceRecognition();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
   }, [question]);
+
+  const startVoiceRecognition = () => {
+    if ("SpeechRecognition" in window || "webkitSpeechRecognition" in window) {
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.lang = "si-LK"; // Set language to Sinhala
+
+      recognition.onresult = (event) => {
+        const voiceInput = event.results[0][0].transcript;
+        console.log("Voice input:", voiceInput);
+
+        // Handle Sinhala voice commands and map them to answer options
+        let selectedAnswer = null;
+        let selectedIndex = null;
+
+        for (let i = 0; i < answers.length; i++) {
+          if (voiceInput.includes((i + 1).toString())) {
+            selectedAnswer = answers[i];
+            selectedIndex = i;
+            break;
+          }
+        }
+
+        if (selectedAnswer) {
+          onSelect(
+            selectedAnswer.mark,
+            selectedAnswer.type,
+            selectedAnswer.overlay,
+            selectedAnswer.overlay2
+          );
+        } else {
+          console.log("No valid answer detected. Please repeat your choice.");
+        }
+      };
+
+      recognition.onerror = (event) => {
+        console.log("Speech recognition error:", event.error);
+        console.log("Please check your microphone and try again.");
+      };
+
+      recognition.start();
+    } else {
+      console.log("Speech recognition not supported in this browser");
+    }
+  };
 
   return (
     <div className="question">
@@ -34,7 +91,7 @@ function Question({ question, image, answers, onSelect }) {
                     )
                   }
                 >
-                  {answer.text}
+                  {index + 1}) {answer.text}
                 </button>
               </div>
             ))}

@@ -195,7 +195,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => { }, []);
+  React.useEffect(() => {}, []);
 
   const playAudio2 = () => {
     if (audioRef2.current) {
@@ -207,7 +207,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => { }, []);
+  React.useEffect(() => {}, []);
 
   const playAudio3 = () => {
     if (audioRef3.current) {
@@ -219,7 +219,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => { }, []);
+  React.useEffect(() => {}, []);
 
   const handleKeyPress = (event) => {
     // Check if the Ctrl key is pressed (event.ctrlKey)
@@ -316,6 +316,37 @@ function Home() {
               <h1 style={{ fontSize: "100px" }} className="display-4">
                 ListenEd
               </h1>
+
+              <form
+                method="get"
+                title="Search Form"
+                action="https://cse.google.com/cse/publicurl"
+              >
+                <div>
+                  <input
+                    type="text"
+                    id="q"
+                    name="q"
+                    title="Search this site"
+                    alt="Search Text"
+                    maxlength="256"
+                  />
+                  <input
+                    type="hidden"
+                    id="cx"
+                    name="cx"
+                    value="013626029654558379071:ze3tw4csia4"
+                  />
+                  <input
+                    type="image"
+                    id="searchSubmit"
+                    name="submit"
+                    src="https://www.flaticon.com/free-icon/active-search-symbol_34148"
+                    alt="Go"
+                    title="Submit Search Query"
+                  />
+                </div>
+              </form>
               <p className="lead">
                 ශ්‍රී ලංකාවෙ පළමු කටහඬ හරහා පාලනය වන Audiobook පුස්තකාලය වෙත ඔබව
                 සාදරෙයෙන් පිලිගනිමු.
