@@ -96,7 +96,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/:id" element={<AudioPlayer />} />
+          <Route path="/audio-player/:id" element={<AudioPlayer />} />
           <Route path="/books-home" element={<AudioBooksPage />} />
           <Route path="/recommendations" element={<Recommendations />} />
           <Route path="/search" element={<Search />} />
