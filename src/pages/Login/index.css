@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Space Grotesk", sans-serif;
+}
+input {
+    height: 45px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+button {
+    width: 200px;
+    outline: none;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login__container,
+.signup__container,
+.verify,
+.dashboard {
+    width: 100%;
+    min-height: 100vh;
+    padding: 50px 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.login__form,
+.verify__form,
+.signup__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.loginBtn,
+.signupBtn,
+.codeBtn {
+  background-color: #FF4500;
+    color: #fff;
+    margin-bottom: 15px;
+}
+.abc123 {
+  background-color: #ffffff;
+    color: #fff;
+    margin-bottom: 15px;
+}
+.signOutBtn {
+    background-color: #c21010;
+    color: #fff;
+}
+.link {
+    cursor: pointer;
+    color: rgb(39, 147, 39);
+}
+.code {
+    width: 50%;
+    text-align: center;
+}
+.verify__form {
+    align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+    .login__container,
+    .signup__container,
+    .verify {
+        padding: 30px;
+    }
+}
+
+.navbar-redorange {
+  background-color: #FF4500;
+}
+
+
+.bg-redorange {
+  background-color: #FF4500 !important;
+}
+
+.navbar-nav.active {
+  font-size: 30px;
+}

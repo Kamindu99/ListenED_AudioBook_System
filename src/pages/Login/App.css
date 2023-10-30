@@ -1,0 +1,70 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh; /* You can adjust this to control the container's height */
+  background-color: #f0f0f0; /* Optional background color */
+}
+
+/* Optional styles for the webcam component */
+.container Webcam {
+  border: 2px solid #d31a1a;
+  border-radius: 10px;
+}
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7801e; /* Background color */
+  color: #fff; /* Text color */
+  width: 50px; /* Adjust width as needed */
+  height: 50px; /* Adjust height as needed */
+  border-radius: 50%; /* Create a circular shape */
+  font-size: 2rem; /* Font size */
+  font-weight: bold; /* Font weight */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+.timer {
+  padding: 10px; /* Add some padding inside the container */
+}
