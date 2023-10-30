@@ -71,6 +71,7 @@ function Search() {
         setSearchError(false);
         console.log('Matching book:', matchingBook);
         setAudioBooksearch(matchingBook);
+        audioRef5.current.play();
       }
       else if (spokenText != 'පොත් සෙවීම') {
         audioRef4.current.play();
@@ -117,7 +118,7 @@ function Search() {
   }, []);
 
   return (
-    <div className="searchhh">
+    <div className="searchhh" style={{ minHeight: '400px' }}>
       <div className="App container text-center ">
 
         <h1 className="search-bar mt-3 ">
@@ -190,7 +191,7 @@ function Search() {
           {AudioBooksearch !== null && (
             <div className="container mt-2 ">
               <h1 class="name-heading">
-                ඔබ සෙවූ පොත්
+                ඔබ සෙවූ පොත
               </h1>
             </div>
 
@@ -216,7 +217,7 @@ function Search() {
                     <div class="card-body">
                       <h1 class="card-title">{AudioBooksearch.title}</h1>
                       <h3 class="card-text">Author : {AudioBooksearch.author}</h3>
-                      <button class="card-text btn btn-success w-100 mt-5">Play</button>
+                      <button class="card-text btn btn-success w-100 mt-5" onClick={() => { window.location.replace(`./audio-player/${AudioBooksearch?.bookid}`) }}>Play</button>
                     </div>
                   </div>
                 </div>
