@@ -195,7 +195,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => {}, []);
+  React.useEffect(() => { }, []);
 
   const playAudio2 = () => {
     if (audioRef2.current) {
@@ -207,7 +207,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => {}, []);
+  React.useEffect(() => { }, []);
 
   const playAudio3 = () => {
     if (audioRef3.current) {
@@ -219,7 +219,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => {}, []);
+  React.useEffect(() => { }, []);
 
   const handleKeyPress = (event) => {
     // Check if the Ctrl key is pressed (event.ctrlKey)
@@ -373,10 +373,62 @@ function Home() {
 
       <div className="container mb-5">
         <h1 class="name-heading">අලුතින් එකතුවූ පොත්</h1>
-        <div className="row cardsss">
-          <Card title={"අඹ යහළුවෝ"} author={"ටී.බී. ඉලංගරත්න"} />
+        <div className="row cardsss ">
+          {/* <Card title={"අඹ යහළුවෝ"} author={"ටී.බී. ඉලංගරත්න"} />
           <Card title={"මඩොල් දූව"} author={"මාර්ටින් වික්‍රමසිංහ"} />
-          <Card title={"අපේ ගම"} author={"මාර්ටින් වික්‍රමසිංහ"} />
+          <Card title={"අපේ ගම"} author={"මාර්ටින් වික්‍රමසිංහ"} /> */}
+
+          <div className="col-lg-4 col-md-4 col-sm-12">
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-5">
+                  <img style={{ height: '90%' }} src="http://fhss.sjp.ac.lk/audiobooks/wp-content/uploads/sites/32/2019/11/3-326x245.png" class="card-img" alt="..." />
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <p class="card-title">අඹ යහළුවෝ</p>
+                    <p class="card-text">ටී.බී. ඉලංගරත්න</p>
+                    <button class="card-text btn btn-success w-100">Play</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-4 col-md-4 col-sm-12">
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-5">
+                  <img style={{ height: '90%' }} src="http://fhss.sjp.ac.lk/audiobooks/wp-content/uploads/sites/32/2019/11/3-326x245.png" class="card-img" alt="..." />
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <p class="card-title">මඩොල් දූව</p>
+                    <p class="card-text">මාර්ටින් වික්‍රමසිංහ</p>
+                    <button class="card-text btn btn-success w-100">Play</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-4 col-md-4 col-sm-12">
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-5">
+                  <img style={{ height: '90%' }} src="http://fhss.sjp.ac.lk/audiobooks/wp-content/uploads/sites/32/2019/11/3-326x245.png" class="card-img" alt="..." />
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <p class="card-title">අපේ ගම</p>
+                    <p class="card-text">මාර්ටින් වික්‍රමසිංහ</p>
+                    <button class="card-text btn btn-success w-100">Play</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 

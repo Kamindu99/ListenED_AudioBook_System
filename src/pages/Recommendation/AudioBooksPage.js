@@ -43,7 +43,7 @@ function AudioBooksPage() {
     };
 
     const playAudio = (bookid) => {
-        window.location.replace(`./${bookid}`)
+        window.location.replace(`./audio-player/${bookid}`)
     };
 
     useEffect(() => {
@@ -132,7 +132,7 @@ function AudioBooksPage() {
                             <ul class="list-group mt-5 text-white">
                                 {AudioBooks.map((audioBook) => (
 
-                                    <li class="list-group-item d-flex justify-content-between align-content-center " onClick={() => { window.location.replace(`./${audioBook?.bookid}`) }}>
+                                    <li class="list-group-item d-flex justify-content-between align-content-center " onClick={() => { window.location.replace(`./audio-player/${audioBook?.bookid}`) }}>
                                         <div class="d-flex flex-row">
                                             <img src="https://cdn-icons-png.flaticon.com/512/59/59284.png" className='me-3' width="70" />
                                             <div class="ml-2">

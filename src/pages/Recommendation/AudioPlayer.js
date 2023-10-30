@@ -22,8 +22,45 @@ const AudioPlayer = () => {
         retrieveAudioBookById(id);
     }, [id]);
 
+    const userid = 9
+
+    const updateUseHistory = async (newHistory) => {
+        try {
+            // Fetch the user's old history
+            const response = await axios.get(`https://listened.onrender.com/usermanagement/${userid}`);
+            const oldHistory = response.data.usehistory;
+
+            // Check if the new book name is already in the user's history
+            if (!oldHistory.includes(newHistory)) {
+                // Update the user's history by appending the new book name
+                const updatedHistory = [...oldHistory, newHistory];
+
+                // Update the user's history using a PUT request
+                const updateResponse = await axios.put('https://listened.onrender.com/usermanagement/', {
+                    userid: userid,
+                    usehistory: updatedHistory,
+                });
+
+                if (updateResponse.status === 200) {
+                    console.log('User history updated successfully');
+                } else {
+                    console.error('Failed to update user history');
+                }
+            } else {
+                console.log('Book is already in user history. No update needed.');
+            }
+        } catch (error) {
+            console.error('Error updating user history', error);
+        }
+    };
+
+
+
     useEffect(() => {
         playAudio();
+        //call the update api and push the book name to the user history
+        const updatedHistory = AudioBooks?.title;
+        updateUseHistory(updatedHistory);
     }, [AudioBooks]);
 
     const retrieveAudioBookById = (id) => {
@@ -49,7 +86,7 @@ const AudioPlayer = () => {
     const startVoiceRecognition = () => {
         console.log('startVoiceRecognition');
         const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'en-US'; // Set the language to Sinhala (Sri Lanka)
+        recognition.lang = 'si-LK'; // Set the language to Sinhala (Sri Lanka)
         recognition.start();
         recognition.onresult = handleSpokenText;
     };
@@ -100,11 +137,12 @@ const AudioPlayer = () => {
     }, [listening]);
 
     useEffect(() => {
-        if (spokenText === 'Play') {
+        console.log(spokenText);
+        if (spokenText === 'Play' || spokenText === 'play' || spokenText === 'පටන් ගන්න' || spokenText === 'පටන් ගන්න' || spokenText === 'ආරම්භ කරන්න') {
             playAudio();
-        } else if (spokenText === 'Stop') {
+        } else if (spokenText === 'නවත්වන්න' || spokenText === 'නවත්තන්න' || spokenText === 'stop' || spokenText === 'Stop') {
             stopAudio();
-        } else if (spokenText === 'Pause') {
+        } else if (spokenText === 'pause' || spokenText === 'නවත්වන්න' || spokenText === 'නවත්තන්න') {
             pauseAudio();
         }
     }, [spokenText]);
@@ -128,6 +166,12 @@ const AudioPlayer = () => {
                 <h1 className="container text-center" style={{ fontSize: '60px', fontWeight: '700', color: 'blue' }}>Audio Books Play පිටුව</h1>
                 <h1 className="container text-center" style={{ fontSize: '40px', fontWeight: '700', letterSpacing: '2px' }}>{AudioBooks?.title}</h1>
             </div>
+
+            {/* {spokenText && (
+                <div className='container text-center'>
+                    <p style={{ fontSize: '20px', fontWeight: '700' }}>You said: {spokenText}</p>
+                </div>
+            )} */}
             <div
                 style={{
                     display: 'flex',

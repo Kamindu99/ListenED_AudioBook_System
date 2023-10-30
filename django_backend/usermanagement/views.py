@@ -65,8 +65,9 @@ def login(request):
                 try:
                     user = UserManagementModel.objects.get(password=password)
                     if user:
+                        userdata = UserManagementSerializer(user).data
                         # Password matches
-                        return JsonResponse({'status': 'Login successful'})
+                        return JsonResponse({'status': 'Login successful','user':userdata}, status=200)
                     else:
                         # Password doesn't match
                         return JsonResponse({'error': 'Invalid login credentials'}, status=401)

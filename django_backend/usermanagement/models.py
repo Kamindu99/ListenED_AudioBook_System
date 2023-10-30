@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from django.db.models import JSONField 
 # Create your models here.
 
 class UserManagementModel(models.Model):
@@ -20,4 +21,10 @@ class UserManagementModel(models.Model):
             size=8,
             default=list
     )
-    overlay = models.CharField(max_length=100, blank=True,default="none")
+    overlay = ArrayField(
+            models.CharField(max_length=200, blank=True),
+            size=8,
+            default=list
+    )
+    fontconfig = JSONField(default=dict) 
+    topicfontconfig = JSONField(default=dict) 
