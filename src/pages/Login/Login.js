@@ -20,31 +20,31 @@ const Login = () => {
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === " " || e.keyCode === 32) {
-                
+
                 startListeningOnClick();
 
             }
             if (e.key === "Enter" || e.keyCode === 13) {
-              
+
                 audioRef.current.play();
 
             }
             if (e.key === "c") {
-              
+
                 setIsLoging(true);
                 window.location.replace(`./dashboard`)
 
             }
             if (e.key === "x") {
-              
-               alert("login Failed")
+
+                alert("login Failed")
 
             }
         };
 
         document.addEventListener("keydown", handleKeyDown);
 
-        
+
     }, []);
 
     useEffect(() => {
@@ -59,7 +59,7 @@ const Login = () => {
         console.log({ text, password });
         try {
             const response = await axios.post("https://listened.onrender.com/user/login/", {
-                password: password, 
+                password: password,
             });
 
 
@@ -89,13 +89,13 @@ const Login = () => {
 
         try {
             const response = await axios.post("http://localhost:3001/api/login/face", {
-                face: imagesrc, 
+                face: imagesrc,
             });
 
 
             console.log("API Response:", response);
 
-         
+
             if (response.status === 200) {
 
                 let utterance = new SpeechSynthesisUtterance("face Login Success");
@@ -164,15 +164,14 @@ const Login = () => {
     const startCamera = () => {
         axios.get('http://127.0.0.1:5000/start_camera')
             .then(response => {
-                console.log(respose.dnata);
-                if(response.data === "success")
-                {
+                // console.log(respose.dnata);
+                if (response.data === "success") {
                     alert("Camera Started")
                 }
             })
             .catch(error => {
                 console.error(error);
-        });
+            });
     }
 
 
@@ -182,7 +181,7 @@ const Login = () => {
             const nameIndex = transcript.toLowerCase().indexOf("face");
             if (nameIndex !== -1) {
                 const name = transcript.substring(nameIndex + 7);
-                setRenderWebcam(true); 
+                setRenderWebcam(true);
                 console.log(name.trim());
             }
         }
@@ -190,8 +189,8 @@ const Login = () => {
             const nameIndex = transcript.toLowerCase().indexOf("password");
             if (nameIndex !== -1) {
                 const name = transcript.substring(nameIndex + 11);
-                setRenderWebcam(false); 
-                setPassword(name.trim()); 
+                setRenderWebcam(false);
+                setPassword(name.trim());
                 setIsPasswordFiled(true)
             }
         }
@@ -201,7 +200,7 @@ const Login = () => {
     return (
         <div>
             {/* <Navbar /> */}
-            <button  className="abc123" onClick={startCamera}>Start Camera</button>
+            <button className="abc123" onClick={startCamera}>Start Camera</button>
 
             <div className='login__container'>
                 <h2>ඇතුලු වන්න </h2>
@@ -269,11 +268,11 @@ const Login = () => {
                 />
             </div>
             <div>
-   <img
-    src="http://localhost:5000/video_feed"
-    alt="Video"
-   />
-  </div>
+                <img
+                    src="http://localhost:5000/video_feed"
+                    alt="Video"
+                />
+            </div>
         </div>
     );
 };
