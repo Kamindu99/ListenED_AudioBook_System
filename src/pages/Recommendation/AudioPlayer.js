@@ -22,8 +22,45 @@ const AudioPlayer = () => {
         retrieveAudioBookById(id);
     }, [id]);
 
+    const userid = 8
+
+    const updateUseHistory = async (newHistory) => {
+        try {
+            // Fetch the user's old history
+            const response = await axios.get(`https://listened.onrender.com/usermanagement/${userid}`);
+            const oldHistory = response.data.usehistory;
+
+            // Check if the new book name is already in the user's history
+            if (!oldHistory.includes(newHistory)) {
+                // Update the user's history by appending the new book name
+                const updatedHistory = [...oldHistory, newHistory];
+
+                // Update the user's history using a PUT request
+                const updateResponse = await axios.put('https://listened.onrender.com/usermanagement/', {
+                    userid: userid,
+                    usehistory: updatedHistory,
+                });
+
+                if (updateResponse.status === 200) {
+                    console.log('User history updated successfully');
+                } else {
+                    console.error('Failed to update user history');
+                }
+            } else {
+                console.log('Book is already in user history. No update needed.');
+            }
+        } catch (error) {
+            console.error('Error updating user history', error);
+        }
+    };
+
+
+
     useEffect(() => {
         playAudio();
+        //call the update api and push the book name to the user history
+        const updatedHistory = AudioBooks?.title;
+        updateUseHistory(updatedHistory);
     }, [AudioBooks]);
 
     const retrieveAudioBookById = (id) => {
