@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import audio8 from '../../Audio/8.m4a'
 
 function AudioBooksPage() {
 
@@ -11,6 +12,7 @@ function AudioBooksPage() {
 
     useEffect(() => {
         retrieveAudioBooks();
+        audioRef.current.play();
     }, []);
 
     const retrieveAudioBooks = () => {
@@ -100,7 +102,7 @@ function AudioBooksPage() {
         <div>
             <audio
                 ref={audioRef}
-                src="./8.m4a"
+                src={audio8}
                 controls
                 style={{
                     width: '100%',
