@@ -138,7 +138,7 @@ const AudioPlayer = () => {
 
     useEffect(() => {
         console.log(spokenText);
-        if (spokenText === 'play') {
+        if (spokenText === 'play' || spokenText === 'පටන් ගන්න' || spokenText === 'පටන් ගන්න' || spokenText === 'ආරම්භ කරන්න') {
             playAudio();
         } else if (spokenText === 'නවත්වන්න' || spokenText === 'නවත්තන්න' || spokenText === 'stop' || spokenText === 'Stop') {
             stopAudio();
