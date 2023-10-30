@@ -138,11 +138,11 @@ const AudioPlayer = () => {
 
     useEffect(() => {
         console.log(spokenText);
-        if (spokenText === 'play' || spokenText === 'පටන් ගන්න' || spokenText === 'පටන් ගන්න' || spokenText === 'ආරම්භ කරන්න') {
+        if (spokenText === 'Play' || spokenText === 'play' || spokenText === 'පටන් ගන්න' || spokenText === 'පටන් ගන්න' || spokenText === 'ආරම්භ කරන්න') {
             playAudio();
         } else if (spokenText === 'නවත්වන්න' || spokenText === 'නවත්තන්න' || spokenText === 'stop' || spokenText === 'Stop') {
             stopAudio();
-        } else if (spokenText === 'pause') {
+        } else if (spokenText === 'pause' || spokenText === 'නවත්වන්න' || spokenText === 'නවත්තන්න') {
             pauseAudio();
         }
     }, [spokenText]);
