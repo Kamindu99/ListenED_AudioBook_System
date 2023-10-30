@@ -14,6 +14,8 @@ import Quiz from "./pages/ColorPrediction/Quiz";
 import FontSelector from "./pages/ColorPrediction/FontSize/FontSizeQuiz";
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import Login from './pages/Login/Login'
+import Signup from './pages/Login/Signup'
 
 
 function App() {
@@ -103,6 +105,8 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/fontselect" element={<FontSelector />} />
+          <Route path="/login" element={<Login />} />
+          <Route path='/register' element={<Signup />} />
         </Routes>
         <Footer />
       </Router>
