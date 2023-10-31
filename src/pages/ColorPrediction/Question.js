@@ -5,7 +5,7 @@ function Question({ question, image, answers, onSelect }) {
     console.log(image);
 
     const handleKeyPress = (e) => {
-      if (e.key === "n") {
+      if (e.key === "z") {
         startVoiceRecognition();
       }
     };

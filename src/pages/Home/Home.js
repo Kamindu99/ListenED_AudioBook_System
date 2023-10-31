@@ -204,7 +204,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => {}, []);
+  React.useEffect(() => { }, []);
 
   const playAudio2 = () => {
     if (audioRef2.current) {
@@ -216,7 +216,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => {}, []);
+  React.useEffect(() => { }, []);
 
   const playAudio3 = () => {
     if (audioRef3.current) {
@@ -228,7 +228,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => {}, []);
+  React.useEffect(() => { }, []);
 
   const handleKeyPress = (event) => {
     // Check if the Ctrl key is pressed (event.ctrlKey)
@@ -350,13 +350,15 @@ function Home() {
                     type="image"
                     id="searchSubmit"
                     name="submit"
-                    src="https://www.flaticon.com/free-icon/active-search-symbol_34148"
+                    src="https://static.thenounproject.com/png/1376288-200.png"
                     alt="Go"
                     title="Submit Search Query"
+                    style={{ width: "100px", height: "90px", marginBottom: '-34px' }}
                   />
                 </div>
               </form>
               <p className="lead">
+                <br />
                 ශ්‍රී ලංකාවෙ පළමු කටහඬ හරහා පාලනය වන Audiobook පුස්තකාලය වෙත ඔබව
                 සාදරෙයෙන් පිලිගනිමු.
               </p>
@@ -382,10 +384,62 @@ function Home() {
 
       <div className="container mb-5">
         <h1 class="name-heading">අලුතින් එකතුවූ පොත්</h1>
-        <div className="row cardsss">
-          <Card title={"අඹ යහළුවෝ"} author={"ටී.බී. ඉලංගරත්න"} />
+        <div className="row cardsss ">
+          {/* <Card title={"අඹ යහළුවෝ"} author={"ටී.බී. ඉලංගරත්න"} />
           <Card title={"මඩොල් දූව"} author={"මාර්ටින් වික්‍රමසිංහ"} />
-          <Card title={"අපේ ගම"} author={"මාර්ටින් වික්‍රමසිංහ"} />
+          <Card title={"අපේ ගම"} author={"මාර්ටින් වික්‍රමසිංහ"} /> */}
+
+          <div className="col-lg-4 col-md-4 col-sm-12">
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-5">
+                  <img style={{ height: '100%' }} src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg" class="card-img" alt="..." />
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <p class="card-title">අඹ යහළුවෝ</p>
+                    <p class="card-text">ටී.බී. ඉලංගරත්න</p>
+                    <button class="card-text btn btn-success w-100">Play</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-4 col-md-4 col-sm-12">
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-5">
+                  <img style={{ height: '100%' }} src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg" class="card-img" alt="..." />
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <p class="card-title">මඩොල් දූව</p>
+                    <p class="card-text">මාර්ටින් වික්‍රමසිංහ</p>
+                    <button class="card-text btn btn-success w-100">Play</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-4 col-md-4 col-sm-12">
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-5">
+                  <img style={{ height: '100%' }} src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg" class="card-img" alt="..." />
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <p class="card-title">අපේ ගම</p>
+                    <p class="card-text">මාර්ටින් වික්‍රමසිංහ</p>
+                    <button class="card-text btn btn-success w-100">Play</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 

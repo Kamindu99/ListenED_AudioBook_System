@@ -4,4 +4,4 @@ from usermanagement.models import UserManagementModel
 class UserManagementSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserManagementModel
-        fields = ('userid', 'name', 'mobile', 'email','password', 'age','studyarea','usehistory','colors','overlay')
+        fields = ('userid', 'name', 'mobile', 'email','password', 'age','studyarea','usehistory','colors','overlay','fontconfig','topicfontconfig')

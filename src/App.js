@@ -15,6 +15,8 @@ import FontSelector from "./pages/ColorPrediction/FontSize/FontSizeQuiz";
 
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import axios from "axios";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Login/Signup";
 
 function App() {
   const [overlayType, setOverlayType] = useState("");
@@ -54,6 +56,14 @@ function App() {
           "topicfontconfigurations",
           topicfontconfigurations
         );
+
+        const color = res.data.colors;
+        //get the first element of the color array
+        const color1 = color[0];
+
+        console.log("color", color1);
+
+        localStorage.setItem("firstColor1", color1);
 
         console.log(res.data.fontconfig);
       });
@@ -137,13 +147,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/:id" element={<AudioPlayer />} />
+          <Route path="/audio-player/:id" element={<AudioPlayer />} />
           <Route path="/books-home" element={<AudioBooksPage />} />
           <Route path="/recommendations" element={<Recommendations />} />
           <Route path="/search" element={<Search />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/fontselect" element={<FontSelector />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Signup />} />
         </Routes>
         <Footer />
       </Router>

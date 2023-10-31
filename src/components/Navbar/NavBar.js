@@ -7,7 +7,7 @@ const Navbar = () => {
   const [name, setName] = React.useState("");
   const [admin, setAdminName] = React.useState("");
 
-  const clr = localStorage.getItem("firstColor");
+  const clr = localStorage.getItem("firstColor1");
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -102,7 +102,7 @@ const Navbar = () => {
           <h3 style={{ marginLeft: "30px" }}>
             <a className="navbar-h ms-5" to="/">
               <img
-                src="https://res.cloudinary.com/dmfljlyu1/image/upload/v1694033302/listened_logo_uhmrcj.png"
+                src="https://res.cloudinary.com/dmfljlyu1/image/upload/v1698612919/logolistened_gahh2l.png"
                 style={{ height: "50px" }}
                 alt="Logo"
                 className="logo-image me-3"
@@ -283,13 +283,25 @@ const Navbar = () => {
                       </a>
                     </li>
                   </div>
-                ) : (
+                ) : name ? (
                   <div>
                     <li>
-                      <a className={`dropdown-item `} href="/admin">
-                        Agent Login
+                      <a className={`dropdown-item `} href="/profile">
+                        Profile
                       </a>
                     </li>
+                    <li>
+                      <a
+                        className={`dropdown-item `}
+                        style={{ cursor: "pointer" }}
+                        onClick={handleuserLogout}
+                      >
+                        LogOut
+                      </a>
+                    </li>
+                  </div>
+                ) : (
+                  <div>
                     <li>
                       <a className={`dropdown-item `} href="/login">
                         User Login
