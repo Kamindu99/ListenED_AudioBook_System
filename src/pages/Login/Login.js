@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import Webcam from "react-webcam";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import axios from "axios";
-import mp3 from "../../Audio/log1.mp3";
+import mp3 from "../../Audio/new.mp4";
+import beep from "../../Audio/beeplog.mp4";
 import './index.css'
 const Login = () => {
     const [text, setText] = useState("");
@@ -32,7 +33,8 @@ const Login = () => {
             if (e.key === "c") {
 
                 setIsLoging(true);
-                window.location.replace(`./dashboard`)
+                const token = localStorage.setItem("name", "kavindu")
+                window.location.replace(`/`)
 
             }
             if (e.key === "x") {
@@ -52,6 +54,8 @@ const Login = () => {
         if (isPasswordFiled) {
             handleSubmit();
         }
+
+         
 
     }, [isPasswordFiled])
 
@@ -255,6 +259,20 @@ const Login = () => {
                 <audio
                     ref={audioRef}
                     src={mp3}
+                    controls
+                    style={{
+                        width: '100%',
+                        marginTop: '20px',
+                        borderRadius: '5px',
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                        backgroundColor: '#f5f5f5',
+                        padding: '10px',
+                        display: 'none'
+                    }}
+                />
+                <audio
+                    ref={audioRef}
+                    src={beep}
                     controls
                     style={{
                         width: '100%',
