@@ -88,6 +88,7 @@ const Navbar = () => {
       }
     }
   }, [])
+
   return (
     <nav className={`navbar navbar-expand-lg ${isSticky ? "stickynav" : "normalnav"}`} style={{ background: "orange" }}>
       <div className="container-fluid">
