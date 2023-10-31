@@ -9,5 +9,6 @@ class Audiobook(models.Model):
     genre = models.CharField(max_length=100)
     studyarea = models.CharField(max_length=100)
     url = models.CharField(max_length=200)
+    nameurl = models.CharField(max_length=300)
     pages = models.CharField(max_length=100)
     year = models.CharField(max_length=100)

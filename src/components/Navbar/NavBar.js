@@ -88,13 +88,14 @@ const Navbar = () => {
       }
     }
   }, [])
+
   return (
     <nav className={`navbar navbar-expand-lg ${isSticky ? "stickynav" : "normalnav"}`} style={{ background: "orange" }}>
       <div className="container-fluid">
         <div className="navbar-heading mt-2">
           <h3 style={{ marginLeft: '30px' }}>
             <a className="navbar-h ms-5" to="/">
-              <img src="https://res.cloudinary.com/dmfljlyu1/image/upload/v1694033302/listened_logo_uhmrcj.png" style={{ height: '50px' }} alt="Logo" className="logo-image me-3" />
+              <img src="https://res.cloudinary.com/dmfljlyu1/image/upload/v1698612919/logolistened_gahh2l.png" style={{ height: '50px' }} alt="Logo" className="logo-image me-3" />
               ListenEd
             </a>
           </h3>
@@ -218,14 +219,7 @@ const Navbar = () => {
                   )
                     : (
                       <div>
-                        <li>
-                          <a
-                            className={`dropdown-item `}
-                            href="/admin"
-                          >
-                            Agent Login
-                          </a>
-                        </li>
+
                         <li>
                           <a
                             className={`dropdown-item `}

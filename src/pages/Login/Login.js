@@ -75,7 +75,7 @@ const Login = () => {
 
                 let utterance = new SpeechSynthesisUtterance("Login Success");
                 speechSynthesis.speak(utterance);
-                navigate("/dashboard");
+                navigate("/");
             }
             else {
                 let utterance = new SpeechSynthesisUtterance("Login Failed");
@@ -104,7 +104,7 @@ const Login = () => {
 
                 let utterance = new SpeechSynthesisUtterance("face Login Success");
                 speechSynthesis.speak(utterance);
-                navigate("/dashboard");
+                navigate("/");
             }
             else {
                 let utterance = new SpeechSynthesisUtterance("face Login Failed");

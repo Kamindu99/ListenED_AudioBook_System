@@ -10,10 +10,39 @@ function AudioBooksPage() {
     const { transcript, listening } = useSpeechRecognition();
     const audioRef = useRef(null);
 
+    const [currentAudioIndex, setCurrentAudioIndex] = useState(0);
+    const audioRef2 = useRef(null);
+
     useEffect(() => {
         retrieveAudioBooks();
-        audioRef.current.play();
+        // audioRef.current.play();
     }, []);
+
+
+    useEffect(() => {
+        const playNextAudio = () => {
+            if (currentAudioIndex < AudioBooks.length) {
+                // Play the current audio track
+                audioRef2.current.src = AudioBooks[currentAudioIndex]?.nameurl;
+                audioRef2.current.play();
+
+                // Increment the current audio index for the next iteration
+                setCurrentAudioIndex(currentAudioIndex + 1);
+            }
+        };
+
+        // Add an event listener to check when the audio track ends
+        audioRef2.current.addEventListener("ended", playNextAudio);
+
+        // Start playing the first audio track
+        playNextAudio();
+
+        return () => {
+            // Cleanup: Remove the event listener when the component unmounts
+            audioRef2.current.removeEventListener("ended", playNextAudio);
+        };
+    }, [AudioBooks]);
+
 
     const retrieveAudioBooks = () => {
         axios.get('https://listened.onrender.com/audiobook/')
@@ -114,6 +143,7 @@ function AudioBooksPage() {
                     display: 'none',
                 }}
             />
+            <audio ref={audioRef2} controls style={{ display: 'none' }} />
             <div className="pagemargin">
                 <div className="">
                     <div >
