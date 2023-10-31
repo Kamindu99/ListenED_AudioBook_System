@@ -11,7 +11,7 @@ higher studies. The ultimate goal is to support the educational development of v
 university students in Sri Lanka and provide them with equal opportunities for learning and
 academic success.
 
-        <section className='mt-5 meetteam' id='aboutus'>
+<section className='mt-5 meetteam' id='aboutus'>
             <h1 style={{ marginLeft: '8%' }}>Meet Our Team !</h1>
             <div className="container mt-5">
                 <div className="row">
@@ -77,4 +77,4 @@ academic success.
                     ))}
                 </div>
             </div>
-        </section>
+</section>
