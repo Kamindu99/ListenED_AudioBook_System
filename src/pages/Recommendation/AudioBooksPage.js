@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import audio8 from '../../Audio/8.m4a'
+import yourAudioClip3 from '../../Audio/beep1.mp3'
 
 function AudioBooksPage() {
 
@@ -13,10 +14,11 @@ function AudioBooksPage() {
     const [currentAudioIndex, setCurrentAudioIndex] = useState(0);
     console.log(currentAudioIndex);
     const audioRef2 = useRef(null);
+    const audioRef3 = useRef(null);
 
     useEffect(() => {
         audioRef.current.play();
-        const delay = 9000; // 5000 milliseconds = 5 seconds
+        const delay = 10000; // 5000 milliseconds = 5 seconds
 
         setTimeout(() => {
             retrieveAudioBooks();
@@ -117,7 +119,8 @@ function AudioBooksPage() {
 
     useEffect(() => {
         const handleSpacebarClick = (event) => {
-            if (event.key === ' ' && !listening) {
+            if (event.keyCode === 17 && !listening) {
+                audioRef3.current.play();
                 startVoiceRecognition();
             }
         };
@@ -169,6 +172,10 @@ function AudioBooksPage() {
                             </h1>
                         </div>
                     </div>
+                    <audio id="myAudio" ref={audioRef3} controls style={{ display: 'none' }}>
+                        <source src={yourAudioClip3} type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                    </audio>
 
                     <div class=" documentpagecss ">
                         <div class="container d-flex justify-content-center">
