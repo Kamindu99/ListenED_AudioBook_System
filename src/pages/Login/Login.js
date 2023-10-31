@@ -55,29 +55,29 @@ const Login = () => {
             handleSubmit();
         }
 
-         
+
 
     }, [isPasswordFiled])
 
     const getRecommndbooks = (user_History, study_Area) => {
         try {
-          axios.post('https://listened.onrender.com/parternimage/', {
-            "image": user_History,
-            "user_study_area": study_Area
-          })
-            .then((res) => {
-              console.log(res.data);
+            axios.post('https://listened.onrender.com/parternimage/', {
+                "image": user_History,
+                "user_study_area": study_Area
             })
-            .catch((error) => {
-              console.log(error);
-      
-              playVoice(`give a correct book name`)
-            });
+                .then((res) => {
+                    console.log(res.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+
+                    // playVoice(`give a correct book name`)
+                });
         } catch (error) {
-          console.log(error);
-       
+            console.log(error);
+
         }
-      };
+    };
 
 
     const handleSubmit = async () => {
