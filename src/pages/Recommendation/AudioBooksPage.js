@@ -11,41 +11,54 @@ function AudioBooksPage() {
     const audioRef = useRef(null);
 
     const [currentAudioIndex, setCurrentAudioIndex] = useState(0);
+    console.log(currentAudioIndex);
     const audioRef2 = useRef(null);
 
     useEffect(() => {
-        retrieveAudioBooks();
-        // audioRef.current.play();
+        audioRef.current.play();
+        const delay = 9000; // 5000 milliseconds = 5 seconds
+
+        setTimeout(() => {
+            retrieveAudioBooks();
+        }, delay);
     }, []);
 
+    const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
-        const playNextAudio = () => {
-            if (currentAudioIndex < AudioBooks.length) {
-                // Play the current audio track
-                audioRef2.current.src = AudioBooks[currentAudioIndex]?.nameurl;
-                audioRef2.current.play();
+        const playAudio = (index) => {
+            if (index < AudioBooks.length) {
+                audioRef2.current.src = AudioBooks[index]?.nameurl;
 
-                // Increment the current audio index for the next iteration
-                setCurrentAudioIndex(currentAudioIndex + 1);
+                // Add an event
+                audioRef2.current.addEventListener("canplay", () => {
+                    audioRef2.current.play();
+                    setIsPlaying(true);
+                });
+
+                // Add an event listener
+                audioRef2.current.addEventListener("ended", () => {
+                    setIsPlaying(false);
+                    setCurrentAudioIndex(currentAudioIndex + 1);
+                    audioRef2.current.removeEventListener("canplay", () => { });
+                    audioRef2.current.removeEventListener("ended", () => { });
+                });
             }
         };
 
-        // Add an event listener to check when the audio track ends
-        audioRef2.current.addEventListener("ended", playNextAudio);
-
-        // Start playing the first audio track
-        playNextAudio();
+        if (!isPlaying) {
+            playAudio(currentAudioIndex);
+        }
 
         return () => {
-            // Cleanup: Remove the event listener when the component unmounts
-            audioRef2.current.removeEventListener("ended", playNextAudio);
+            audioRef2.current.removeEventListener("canplay", () => { });
+            audioRef2.current.removeEventListener("ended", () => { });
         };
-    }, [AudioBooks]);
+    }, [AudioBooks, currentAudioIndex, isPlaying]);
 
 
     const retrieveAudioBooks = () => {
-        axios.get('https://listened.onrender.com/audiobook/')
+        axios.get('http://127.0.0.1:8000/audiobook/')
             .then((res) => {
                 setAudioBooks(res.data);
             })
