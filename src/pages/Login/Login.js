@@ -59,6 +59,27 @@ const Login = () => {
 
     }, [isPasswordFiled])
 
+    const getRecommndbooks = (user_History, study_Area) => {
+        try {
+          axios.post('https://listened.onrender.com/parternimage/', {
+            "image": user_History,
+            "user_study_area": study_Area
+          })
+            .then((res) => {
+              console.log(res.data);
+            })
+            .catch((error) => {
+              console.log(error);
+      
+              playVoice(`give a correct book name`)
+            });
+        } catch (error) {
+          console.log(error);
+       
+        }
+      };
+
+
     const handleSubmit = async () => {
         console.log({ text, password });
         try {
@@ -254,7 +275,6 @@ const Login = () => {
 
                 )}
                 <p>{listening ? "on" : "off"}</p>
-                <p>{transcript}</p>
 
                 <audio
                     ref={audioRef}
