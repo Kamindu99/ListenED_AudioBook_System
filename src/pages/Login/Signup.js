@@ -28,7 +28,6 @@ const Signup = () => {
   } = useSpeechRecognition();
 
 
-
   useEffect(() => {
     if (!browserSupportsSpeechRecognition) {
       return <span>Browser doesn't support speech recognition.</span>;
