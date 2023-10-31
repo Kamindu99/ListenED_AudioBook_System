@@ -5,7 +5,7 @@ function Question({ question, image, answers, onSelect }) {
     console.log(image);
 
     const handleKeyPress = (e) => {
-      if (e.key === "n") {
+      if (e.key === "z") {
         startVoiceRecognition();
       }
     };
@@ -28,27 +28,28 @@ function Question({ question, image, answers, onSelect }) {
         const voiceInput = event.results[0][0].transcript;
         console.log("Voice input:", voiceInput);
 
-        // Handle Sinhala voice commands and map them to answer options
-        let selectedAnswer = null;
-        let selectedIndex = null;
-
-        for (let i = 0; i < answers.length; i++) {
-          if (voiceInput.includes((i + 1).toString())) {
-            selectedAnswer = answers[i];
-            selectedIndex = i;
-            break;
+        // Extract the number from the voice input
+        const numberMatch = voiceInput.match(/\d+/);
+        if (numberMatch) {
+          const selectedNumber = parseInt(numberMatch[0]);
+          if (selectedNumber >= 1 && selectedNumber <= answers.length) {
+            // A valid number within the answer options was detected
+            const selectedAnswer = answers[selectedNumber - 1];
+            onSelect(
+              selectedAnswer.mark,
+              selectedAnswer.type,
+              selectedAnswer.overlay,
+              selectedAnswer.overlay2
+            );
+          } else {
+            console.log(
+              "Invalid number. Please repeat your choice with a valid number."
+            );
           }
-        }
-
-        if (selectedAnswer) {
-          onSelect(
-            selectedAnswer.mark,
-            selectedAnswer.type,
-            selectedAnswer.overlay,
-            selectedAnswer.overlay2
-          );
         } else {
-          console.log("No valid answer detected. Please repeat your choice.");
+          console.log(
+            "No valid number detected. Please repeat your choice with a number."
+          );
         }
       };
 
