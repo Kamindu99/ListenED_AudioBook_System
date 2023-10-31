@@ -10,10 +10,52 @@ function AudioBooksPage() {
     const { transcript, listening } = useSpeechRecognition();
     const audioRef = useRef(null);
 
+    const [currentAudioIndex, setCurrentAudioIndex] = useState(0);
+    console.log(currentAudioIndex);
+    const audioRef2 = useRef(null);
+
     useEffect(() => {
-        retrieveAudioBooks();
         audioRef.current.play();
+        const delay = 9000; // 5000 milliseconds = 5 seconds
+
+        setTimeout(() => {
+            retrieveAudioBooks();
+        }, delay);
     }, []);
+
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    useEffect(() => {
+        const playAudio = (index) => {
+            if (index < AudioBooks.length) {
+                audioRef2.current.src = AudioBooks[index]?.nameurl;
+
+                // Add an event
+                audioRef2.current.addEventListener("canplay", () => {
+                    audioRef2.current.play();
+                    setIsPlaying(true);
+                });
+
+                // Add an event listener
+                audioRef2.current.addEventListener("ended", () => {
+                    setIsPlaying(false);
+                    setCurrentAudioIndex(currentAudioIndex + 1);
+                    audioRef2.current.removeEventListener("canplay", () => { });
+                    audioRef2.current.removeEventListener("ended", () => { });
+                });
+            }
+        };
+
+        if (!isPlaying) {
+            playAudio(currentAudioIndex);
+        }
+
+        return () => {
+            audioRef2.current.removeEventListener("canplay", () => { });
+            audioRef2.current.removeEventListener("ended", () => { });
+        };
+    }, [AudioBooks, currentAudioIndex, isPlaying]);
+
 
     const retrieveAudioBooks = () => {
         axios.get('https://listened.onrender.com/audiobook/')
@@ -99,7 +141,7 @@ function AudioBooksPage() {
     }, []);
 
     return (
-        <div>
+        <div style={{ minHeight: '400px' }}>
             <audio
                 ref={audioRef}
                 src={audio8}
@@ -114,6 +156,7 @@ function AudioBooksPage() {
                     display: 'none',
                 }}
             />
+            <audio ref={audioRef2} controls style={{ display: 'none' }} />
             <div className="pagemargin">
                 <div className="">
                     <div >

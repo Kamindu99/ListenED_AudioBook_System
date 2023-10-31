@@ -84,11 +84,15 @@ const Navbar = () => {
         setUserType("0");
       }
     }
+<<<<<<< HEAD
   }, []);
 
   const navbarStyle = {
     backgroundColor: clr ? clr : "#FF4500",
   };
+=======
+  }, [])
+>>>>>>> e8b8481e601341e381d81b8b44e762c029c2bcc7
 
   return (
     <nav

@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import Webcam from "react-webcam";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import axios from "axios";
-import mp3 from "../../Audio/log1.mp3";
+import mp3 from "../../Audio/new.mp4";
+import beep from "../../Audio/beeplog.mp4";
 import './index.css'
 const Login = () => {
     const [text, setText] = useState("");
@@ -32,7 +33,8 @@ const Login = () => {
             if (e.key === "c") {
 
                 setIsLoging(true);
-                window.location.replace(`./`)
+                const token = localStorage.setItem("name", "kavindu")
+                window.location.replace(`/`)
 
             }
             if (e.key === "x") {
@@ -53,7 +55,30 @@ const Login = () => {
             handleSubmit();
         }
 
+
+
     }, [isPasswordFiled])
+
+    const getRecommndbooks = (user_History, study_Area) => {
+        try {
+            axios.post('https://listened.onrender.com/parternimage/', {
+                "image": user_History,
+                "user_study_area": study_Area
+            })
+                .then((res) => {
+                    console.log(res.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+
+                    // playVoice(`give a correct book name`)
+                });
+        } catch (error) {
+            console.log(error);
+
+        }
+    };
+
 
     const handleSubmit = async () => {
         console.log({ text, password });
@@ -250,11 +275,24 @@ const Login = () => {
 
                 )}
                 <p>{listening ? "on" : "off"}</p>
-                <p>{transcript}</p>
 
                 <audio
                     ref={audioRef}
                     src={mp3}
+                    controls
+                    style={{
+                        width: '100%',
+                        marginTop: '20px',
+                        borderRadius: '5px',
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+                        backgroundColor: '#f5f5f5',
+                        padding: '10px',
+                        display: 'none'
+                    }}
+                />
+                <audio
+                    ref={audioRef}
+                    src={beep}
                     controls
                     style={{
                         width: '100%',
