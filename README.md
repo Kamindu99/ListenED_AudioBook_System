@@ -46,9 +46,10 @@ This list is not exhaustive, and the project may incorporate other technologies 
 
 ## Meet Our Team!
 
-| <img src="https://media.licdn.com/dms/image/C4D03AQHTlOHM8NKOaw/profile-displayphoto-shrink_400_400/0/1614565198876?e=1699488000&v=beta&t=_ow3QZsJOl6Y8jgXsh2pMQ4jR0hI-XbsWUeHyHNolsc" width="100%" height="100" style="object-fit: cover;"> |  <img src="https://media.licdn.com/dms/image/C5603AQGnBMwskpBqvw/profile-displayphoto-shrink_800_800/0/1656409186148?e=2147483647&v=beta&t=1JY6ZWlcPp7IySxX-_I6ECkodmTMZFKR4WA1K5nl75A" width="100%" height="100"style="object-fit: cover;"> |  <img src="https://media.licdn.com/dms/image/D5603AQFZaeGB6WnZ5w/profile-displayphoto-shrink_400_400/0/1691774590062?e=1699488000&v=beta&t=FNb0KvJp4qXemhSbCLCtKvxrDYC7ndrK6O3WGg9cUoE" width="100%" height="100"style="object-fit: cover;"> |  <img src="https://media.licdn.com/dms/image/C5603AQHcb0zJv_-MBg/profile-displayphoto-shrink_800_800/0/1657124009878?e=2147483647&v=beta&t=a-JkWMuof1qHaz7bX8F-sq_RKMK8_beStYSHcV1XNwU" width="100%" height="100"style="object-fit: cover;"> |
-|:---
-|**Vihanga Janith**<br>Group Leader<br>SLIIT<br>Software Engineer |  **Kamindu Gayantha**<br>Group Member<br>SLIIT<br>Software Engineer |  **Kavindu Perera**<br>Group Member<br>SLIIT<br>Software Engineer |  **Amanda Nethmini**<br>Group Member<br>SLIIT<br>Software Engineer |
+| <img src="https://media.licdn.com/dms/image/C4D03AQHTlOHM8NKOaw/profile-displayphoto-shrink_400_400/0/1614565198876?e=1699488000&v=beta&t=_ow3QZsJOl6Y8jgXsh2pMQ4jR0hI-XbsWUeHyHNolsc" width="100%" height="100" style="object-fit: cover;"> | <img src="https://media.licdn.com/dms/image/C5603AQGnBMwskpBqvw/profile-displayphoto-shrink_800_800/0/1656409186148?e=2147483647&v=beta&t=1JY6ZWlcPp7IySxX-_I6ECkodmTMZFKR4WA1K5nl75A" width="100%" height="100" style="object-fit: cover;"> | <img src="https://media.licdn.com/dms/image/D5603AQFZaeGB6WnZ5w/profile-displayphoto-shrink_400_400/0/1691774590062?e=1699488000&v=beta&t=FNb0KvJp4qXemhSbCLCtKvxrDYC7ndrK6O3WGg9cUoE" width="100%" height="100" style="object-fit: cover;"> | <img src="https://media.licdn.com/dms/image/C5603AQHcb0zJv_-MBg/profile-displayphoto-shrink_800_800/0/1657124009878?e=2147483647&v=beta&t=a-JkWMuof1qHaz7bX8F-sq_RKMK8_beStYSHcV1XNwU" width="100%" height="100" style="object-fit: cover;"> |
+|:---:|:---:|:---:|:---:|
+| **Vihanga Janith**<br>Group Leader<br>SLIIT<br>Software Engineer | **Kamindu Gayantha**<br>Group Member<br>SLIIT<br>Software Engineer | **Kavindu Perera**<br>Group Member<br>SLIIT<br>Software Engineer | **Amanda Nethmini**<br>Group Member<br>SLIIT<br>Software Engineer |
+
 
 
 ## About me
