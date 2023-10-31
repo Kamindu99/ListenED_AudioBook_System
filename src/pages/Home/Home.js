@@ -28,7 +28,6 @@ function Home() {
     // Start playing the audio when the component mounts
     const audio = new Audio(yourAudioClip);
     audio.play();
-
     // Optionally, you can add event listeners for audio control
     // For example, to pause the audio when the component unmounts
   }, []);
@@ -154,6 +153,16 @@ function Home() {
             console.log("correct");
           } else if (responseData === "go" && nouns === "search") {
             window.location.href = "/search";
+          } else if (
+            (responseData === "go" || sim.includes("go")) &&
+            nouns === "recommendations"
+          ) {
+            window.location.href = "/recommendations";
+          } else if (
+            (responseData === "go" || sim.includes("go")) &&
+            nouns === "questionnaire"
+          ) {
+            window.location.href = "/quiz";
           } else {
             console.log("errr");
             setErr(true);

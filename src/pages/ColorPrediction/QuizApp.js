@@ -1,8 +1,10 @@
 // src/components/QuizApp.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import quizData from "./quizData";
 import Question from "./Question";
 import axios from "axios";
+import yourAudioClip from "../../Audio/ishi2.m4a";
+import yourAudioClip2 from "../../Audio/ishi3.m4a";
 
 function QuizApp() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -20,6 +22,10 @@ function QuizApp() {
   const [overlayColor, setOverlayColor] = useState("");
 
   const [uiColors, setUIColors] = useState("");
+
+  const audioRef = useRef(null);
+  const audioRef2 = useRef(null);
+  const audioRef3 = useRef(null);
 
   const handleAnswerSelect = (
     selectedAnswerMark,
@@ -40,6 +46,8 @@ function QuizApp() {
   };
 
   const currentQuestion = quizData[currentQuestionIndex];
+
+  const userid = 9;
 
   useEffect(() => {
     const calculateGrade = () => {
@@ -108,6 +116,7 @@ function QuizApp() {
 
       if (mostFrequentType === "protanopia") {
         setProtanopia(true);
+        playAudio2();
 
         setOverlayColor(overlayType);
         console.log(overlayType);
@@ -116,12 +125,31 @@ function QuizApp() {
         console.log(filteredArray);
 
         localStorage.setItem("dataKey", JSON.stringify(filteredArray));
+
+        axios
+          .put("https://listened.onrender.com/usermanagement/", {
+            userid: userid,
+            overlay: filteredArray,
+          })
+          .then((response) => {
+            console.log(response.data);
+          });
+
         axios
           .post("http://127.0.0.1:8000/colorspred/", {
             type: mostFrequentType,
           })
           .then((response) => {
             console.log(response.data);
+
+            axios
+              .put("https://listened.onrender.com/usermanagement/", {
+                userid: userid,
+                colors: response.data,
+              })
+              .then((response) => {
+                console.log(response.data);
+              });
 
             if (localStorage.getItem("firstColor")) {
               localStorage.removeItem("firstColor");
@@ -136,6 +164,7 @@ function QuizApp() {
       }
       if (mostFrequentType === "deuteranopia") {
         setDeuteranopia(true);
+        playAudio();
 
         setOverlayColor(overlayType2);
         console.log(overlayType2);
@@ -143,6 +172,16 @@ function QuizApp() {
 
         console.log(filteredArray);
         localStorage.setItem("dataKey", JSON.stringify(filteredArray));
+
+        axios
+          .put("https://listened.onrender.com/usermanagement/", {
+            userid: userid,
+            overlay: filteredArray,
+          })
+          .then((response) => {
+            console.log(response.data);
+          });
+
         axios
           .post("http://127.0.0.1:8000/colorspred/", {
             type: mostFrequentType,
@@ -150,6 +189,15 @@ function QuizApp() {
           .then((response) => {
             console.log(response.data);
             setUIColors(response.data);
+
+            axios
+              .put("https://listened.onrender.com/usermanagement/", {
+                userid: userid,
+                colors: response.data,
+              })
+              .then((response) => {
+                console.log(response.data);
+              });
 
             if (localStorage.getItem("firstColor")) {
               localStorage.removeItem("firstColor");
@@ -167,6 +215,24 @@ function QuizApp() {
 
   const refresh = () => {
     window.location.reload();
+  };
+
+  const playAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch((error) => {
+        // Handle any errors that occur during playback
+        console.error("Audio playback error:", error);
+      });
+    }
+  };
+
+  const playAudio2 = () => {
+    if (audioRef2.current) {
+      audioRef2.current.play().catch((error) => {
+        // Handle any errors that occur during playback
+        console.error("Audio playback error:", error);
+      });
+    }
   };
 
   return (
@@ -204,6 +270,37 @@ function QuizApp() {
           <button className="btn btn-primary" onClick={refresh}>
             වර්ණ ආවරණය යොදන්න
           </button>
+
+          <audio
+            id="myAudio"
+            ref={audioRef}
+            controls
+            style={{ display: "none" }}
+          >
+            <source src={yourAudioClip} type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+          <audio
+            id="myAudio"
+            ref={audioRef2}
+            controls
+            style={{ display: "none" }}
+          >
+            <source src={yourAudioClip2} type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+          {/* <audio id="myAudio" ref={audioRef3} controls style={{ display: "none" }}>
+        <source src={yourAudioClip3} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <audio id="myAudio" ref={audioRef4} controls style={{ display: "none" }}>
+        <source src={audio4} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <audio id="myAudio" ref={audioRef5} controls style={{ display: "none" }}>
+        <source src={audio5} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio> */}
 
           {/* <p>Overlay Type: {overlayType}</p> */}
 

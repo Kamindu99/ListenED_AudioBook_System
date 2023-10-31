@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
 import ColorSelector from "../ColorSelector";
+import axios from "axios";
 
 const FontSelector = () => {
   const savedFontSize1 = localStorage.getItem("fontSize");
-  const [fontSize, setFontSize] = useState(
-    savedFontSize1 ? savedFontSize1 : "16px"
-  ); // Initial font size
-  const [fontWeight, setFontWeight] = useState(
-    localStorage.getItem("fontWeight")
-      ? localStorage.getItem("fontWeight")
-      : "normal"
-  ); // Initial font weight
-  const [fontStyle, setFontStyle] = useState(
-    localStorage.getItem("fontStyle")
-      ? localStorage.getItem("fontStyle")
-      : "normal"
-  ); // Initial font style
+  // const [fontSize, setFontSize] = useState(
+  //   savedFontSize1 ? savedFontSize1 : "16px"
+  // ); // Initial font size
+  // const [fontWeight, setFontWeight] = useState(
+  //   localStorage.getItem("fontWeight")
+  //     ? localStorage.getItem("fontWeight")
+  //     : "normal"
+  // ); // Initial font weight
+  // const [fontStyle, setFontStyle] = useState(
+  //   localStorage.getItem("fontStyle")
+  //     ? localStorage.getItem("fontStyle")
+  //     : "normal"
+  // ); // Initial font style
+  const [fontSize, setFontSize] = useState("16px"); // Initial font size
+  const [fontWeight, setFontWeight] = useState("normal");
+  const [fontStyle, setFontStyle] = useState("normal");
 
   const [fontSize1, setFontSize1] = useState("16px"); // Initial font size
   const [fontWeight1, setFontWeight1] = useState("normal"); // Initial font weight
@@ -85,11 +89,32 @@ const FontSelector = () => {
       "fontConfigurations",
       JSON.stringify(selectedConfigurations)
     );
-    localStorage.setItem("fontSize", JSON.stringify(fontSize));
-    localStorage.setItem("fontWeight", JSON.stringify(fontWeight));
-    localStorage.setItem("fontStyle", JSON.stringify(fontStyle));
+    // localStorage.setItem("fontSize", JSON.stringify(fontSize));
+    // localStorage.setItem("fontWeight", JSON.stringify(fontWeight));
+    // localStorage.setItem("fontStyle", JSON.stringify(fontStyle));
 
-    window.location.replace("/");
+    localStorage.setItem("fontSize", fontSize);
+    localStorage.setItem("fontWeight", fontWeight);
+    localStorage.setItem("fontStyle", fontStyle);
+
+    console.log("fontConfigurations", selectedConfigurations);
+
+    const selectedConfigurationsArray = Object.values(selectedConfigurations);
+    console.log("selectedConfigurationsArray", selectedConfigurationsArray);
+
+    // window.location.replace("/");
+    const userid = 9;
+
+    axios
+      .put("https://listened.onrender.com/usermanagement/", {
+        userid: userid,
+        fontconfig: selectedConfigurations,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+
+    // window.location.replace("/quiz");
   };
 
   const handleSaveConfigurations1 = () => {
@@ -109,7 +134,23 @@ const FontSelector = () => {
     localStorage.setItem("fontWeight1", JSON.stringify(fontWeight1));
     localStorage.setItem("fontStyle1", JSON.stringify(fontStyle1));
 
-    window.location.replace("/");
+    console.log("fontConfigurations", selectedConfigurations1);
+    //make selected configurations an array
+    const selectedConfigurationsArray = Object.values(selectedConfigurations1);
+    console.log("selectedConfigurationsArray", selectedConfigurationsArray);
+
+    const userid = 9;
+
+    axios
+      .put("https://listened.onrender.com/usermanagement/", {
+        userid: userid,
+        topicfontconfig: selectedConfigurations1,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+
+    // window.location.replace("/quiz");
   };
 
   return (
