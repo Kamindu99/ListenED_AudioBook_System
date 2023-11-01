@@ -2,7 +2,7 @@
 
 ### [Live Site](https://listen-ed.netlify.app/)
 
-![Audio Book System](https://res.cloudinary.com/dmfljlyu1/image/upload/v1698773910/audiobooksystem_qqkkeb.jpg)
+![Audio Book System](https://res.cloudinary.com/dmfljlyu1/image/upload/v1698875024/audiobooksystem_hpa42w.jpg)
 
 A Voice Controlled Audiobook Platform for Visually Impaired Students in Sri Lanka
 
