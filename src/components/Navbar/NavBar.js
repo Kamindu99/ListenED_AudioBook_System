@@ -92,9 +92,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`navbar navbar-expand-lg ${
-        isSticky ? "stickynav" : "normalnav"
-      }`}
+      className={`navbar navbar-expand-lg ${isSticky ? "stickynav" : "normalnav"
+        }`}
       style={{ background: clr ? clr : "#FF4500" }}
     >
       <div className="container-fluid">
@@ -131,9 +130,8 @@ const Navbar = () => {
           >
             <li className="nav-item">
               <a
-                className={`nav-link nav-link-a-text me-3 ${
-                  isHome ? "active" : ""
-                }`}
+                className={`nav-link nav-link-a-text me-3 ${isHome ? "active" : ""
+                  }`}
                 href="/"
               >
                 ප්‍රධාන පිටුව
@@ -143,9 +141,8 @@ const Navbar = () => {
             <li className="nav-item">
               <a
                 href="/books-home"
-                className={`nav-link me-3 nav-link-a-text ${
-                  isalltrains ? "active" : ""
-                }`}
+                className={`nav-link me-3 nav-link-a-text ${isalltrains ? "active" : ""
+                  }`}
               >
                 Audio පොත්
               </a>
@@ -154,9 +151,8 @@ const Navbar = () => {
             <li className="nav-item">
               <a
                 href="/search"
-                className={`nav-link me-3 nav-link-a-text ${
-                  issearch ? "active" : ""
-                }`}
+                className={`nav-link me-3 nav-link-a-text ${issearch ? "active" : ""
+                  }`}
               >
                 සොයන්න
               </a>
@@ -165,9 +161,8 @@ const Navbar = () => {
             <li className="nav-item">
               <a
                 href="/recommendations"
-                className={`nav-link me-3 nav-link-a-text ${
-                  ismybookings ? "active" : ""
-                }`}
+                className={`nav-link me-3 nav-link-a-text ${ismybookings ? "active" : ""
+                  }`}
               >
                 නිර්දේශයන්
               </a>
@@ -175,9 +170,8 @@ const Navbar = () => {
 
             <li className="nav-item">
               <a
-                className={`nav-link nav-link-a-text me-3 ${
-                  isQuiz ? "active" : ""
-                }`}
+                className={`nav-link nav-link-a-text me-3 ${isQuiz ? "active" : ""
+                  }`}
                 href="/quiz"
               >
                 ප්‍රශ්නාවලිය
@@ -186,9 +180,8 @@ const Navbar = () => {
 
             <li className="nav-item">
               <a
-                className={`nav-link nav-link-a-text me-3 ${
-                  isAboutUs ? "active" : ""
-                }`}
+                className={`nav-link nav-link-a-text me-3 ${isAboutUs ? "active" : ""
+                  }`}
                 href="/about"
               >
                 අපි ගැන
@@ -201,9 +194,8 @@ const Navbar = () => {
             >
               {!isLogin ? (
                 <a
-                  className={`nav-link nav-link-a-text me-3 dropdown-toggle ${
-                    islogin ? "active" : ""
-                  }`}
+                  className={`nav-link nav-link-a-text me-3 dropdown-toggle ${islogin ? "active" : ""
+                    }`}
                   type="button"
                   role="button"
                   id="downLoadDropdown"
@@ -215,9 +207,8 @@ const Navbar = () => {
                 </a>
               ) : name ? (
                 <a
-                  className={`nav-link nav-link-a-text me-3 dropdown-toggle ${
-                    islogin ? "active" : ""
-                  }`}
+                  className={`nav-link nav-link-a-text me-3 dropdown-toggle ${islogin ? "active" : ""
+                    }`}
                   type="button"
                   role="button"
                   id="downLoadDropdown"
@@ -229,9 +220,8 @@ const Navbar = () => {
                 </a>
               ) : (
                 <a
-                  className={`nav-link nav-link-a-text me-3 dropdown-toggle ${
-                    islogin ? "active" : ""
-                  }`}
+                  className={`nav-link nav-link-a-text me-3 dropdown-toggle ${islogin ? "active" : ""
+                    }`}
                   type="button"
                   role="button"
                   id="downLoadDropdown"
@@ -244,9 +234,8 @@ const Navbar = () => {
               )}
 
               <ul
-                className={`dropdown-menu${
-                  isDownloadDropdownOpen ? " show" : ""
-                }`}
+                className={`dropdown-menu${isDownloadDropdownOpen ? " show" : ""
+                  }`}
                 aria-labelledby="downLoadDropdown"
               >
                 {!isLogin ? (

@@ -136,13 +136,17 @@ const AudioPlayer = () => {
         };
     }, [listening]);
 
+    const stopKeywords = ['අවසන් කරන්න', 'අවසන්', 'stop', 'Stop', 'අවසාන කරන්න', 'අවසාන'];
+    const playKeywords = ['Play', 'play', 'පටන් ගන්න', 'ආරම්භ කරන්න', 'ආරම්'];
+    const pauseKeywords = ['pause', 'නවත්වන්න', 'නවත්තන්න', 'නවත්'];
+
     useEffect(() => {
         console.log(spokenText);
-        if (spokenText === 'Play' || spokenText === 'play' || spokenText === 'පටන් ගන්න' || spokenText === 'පටන් ගන්න' || spokenText === 'ආරම්භ කරන්න') {
+        if (playKeywords.some(keyword => spokenText.includes(keyword))) {
             playAudio();
-        } else if (spokenText === 'නවත්වන්න' || spokenText === 'නවත්තන්න' || spokenText === 'stop' || spokenText === 'Stop') {
+        } else if (stopKeywords.some(keyword => spokenText.includes(keyword))) {
             stopAudio();
-        } else if (spokenText === 'pause' || spokenText === 'නවත්වන්න' || spokenText === 'නවත්තන්න') {
+        } else if (pauseKeywords.some(keyword => spokenText.includes(keyword))) {
             pauseAudio();
         }
     }, [spokenText]);
