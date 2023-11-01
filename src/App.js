@@ -37,7 +37,7 @@ function App() {
       }
     }
 
-    const userid = 9;
+    const userid = localStorage.getItem("userId");
 
     axios
       .get(`https://listened.onrender.com/usermanagement/${userid}`)
@@ -127,7 +127,7 @@ function App() {
 
           <div className="col-md-6">
             <button style={buttonStyle} onClick={removeAll}>
-              වර්ණ ආවරණය ඉවත් sampurnaye කරන්න
+              වර්ණ ආවරණය සම්පූර්ණයෙන් ඉවත් කරන්න
             </button>
           </div>
         </div>

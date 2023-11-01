@@ -47,7 +47,7 @@ function QuizApp() {
 
   const currentQuestion = quizData[currentQuestionIndex];
 
-  const userid = 9;
+  const userid = localStorage.getItem("userId");
 
   useEffect(() => {
     const calculateGrade = () => {

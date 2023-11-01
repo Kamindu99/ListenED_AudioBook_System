@@ -35,7 +35,7 @@ function Quiz() {
     // setfontStyle(JSON.parse(localStorage.getItem("fontStyle")));
     // setfontStyle1(JSON.parse(localStorage.getItem("fontStyle1")));
 
-    const userid = 9;
+    const userid = localStorage.getItem("userId");
 
     axios
       .get(`https://listened.onrender.com/usermanagement/${userid}`)
@@ -469,16 +469,8 @@ function Quiz() {
                   <h5 className="modal-title" style={{ color: "white" }}>
                     ඉෂිහාරා වර්ණ අන්ධතා පරීක්ෂණය
                   </h5>
-                  <button
-                    type="button"
-                    style={{ color: "white" }}
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                    onClick={handleCloseModal}
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+
+                  <p onClick={handleCloseModal}>Close</p>
                 </div>
                 <div className="modal-body">
                   <QuizApp />

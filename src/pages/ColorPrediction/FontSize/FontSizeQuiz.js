@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ColorSelector from "../ColorSelector";
 import axios from "axios";
+import AudioClip1 from "../../../Audio/sett1.m4a";
+import AudioClip2 from "../../../Audio/setting.m4a";
 
 const FontSelector = () => {
   const savedFontSize1 = localStorage.getItem("fontSize");
@@ -24,6 +26,31 @@ const FontSelector = () => {
   const [fontSize1, setFontSize1] = useState("16px"); // Initial font size
   const [fontWeight1, setFontWeight1] = useState("normal"); // Initial font weight
   const [fontStyle1, setFontStyle1] = useState("normal");
+
+  const audioRef = useRef(null);
+  const audioRef2 = useRef(null);
+
+  const playAudio2 = () => {
+    if (audioRef2.current) {
+      audioRef2.current.play().catch((error) => {
+        // Handle any errors that occur during playback
+        console.error("Audio playback error:", error);
+      });
+    }
+  };
+
+  const playAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.play().catch((error) => {
+        // Handle any errors that occur during playback
+        console.error("Audio playback error:", error);
+      });
+    }
+  };
+
+  useEffect(() => {
+    playAudio();
+  }, []);
 
   useEffect(() => {
     const savedFontSize = localStorage.getItem("fontSize");
@@ -114,6 +141,7 @@ const FontSelector = () => {
         console.log(response.data);
       });
 
+    playAudio2();
     // window.location.replace("/quiz");
   };
 
@@ -149,7 +177,7 @@ const FontSelector = () => {
       .then((response) => {
         console.log(response.data);
       });
-
+    playAudio2();
     // window.location.replace("/quiz");
   };
 
@@ -313,6 +341,21 @@ const FontSelector = () => {
             </button>
           </div>
         </div>
+
+        <audio
+          id="myAudio"
+          ref={audioRef2}
+          controls
+          style={{ display: "none" }}
+        >
+          <source src={AudioClip2} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <audio id="myAudio" ref={audioRef} controls style={{ display: "none" }}>
+          <source src={AudioClip1} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
 
         {/* <ColorSelector/> */}
       </div>

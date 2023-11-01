@@ -31,7 +31,7 @@ def colorsPred(request, id=0):
     # Step 1: Load and preprocess the dataset
     data = pd.read_csv('./color_names3.csv')
 
-    # Convert hex color codes to RGB
+    # Convert hex color codes to RGB - Preprocessing
     data['Red (8 bit)'] = data['Hex (24 bit)'].apply(lambda x: int(x[1:3], 16))
     data['Green (8 bit)'] = data['Hex (24 bit)'].apply(lambda x: int(x[3:5], 16))
     data['Blue (8 bit)'] = data['Hex (24 bit)'].apply(lambda x: int(x[5:7], 16))

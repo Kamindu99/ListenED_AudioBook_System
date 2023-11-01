@@ -163,6 +163,11 @@ function Home() {
             nouns === "questionnaire"
           ) {
             window.location.href = "/quiz";
+          } else if (
+            (responseData === "go" || sim.includes("go")) &&
+            nouns === "settings"
+          ) {
+            window.location.href = "/fontselect";
           } else {
             console.log("errr");
             setErr(true);
@@ -204,7 +209,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => { }, []);
+  React.useEffect(() => {}, []);
 
   const playAudio2 = () => {
     if (audioRef2.current) {
@@ -216,7 +221,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => { }, []);
+  React.useEffect(() => {}, []);
 
   const playAudio3 = () => {
     if (audioRef3.current) {
@@ -228,7 +233,7 @@ function Home() {
   };
 
   // Auto-play the audio when the component mounts (with user interaction)
-  React.useEffect(() => { }, []);
+  React.useEffect(() => {}, []);
 
   const handleKeyPress = (event) => {
     // Check if the Ctrl key is pressed (event.ctrlKey)
@@ -353,7 +358,11 @@ function Home() {
                     src="https://static.thenounproject.com/png/1376288-200.png"
                     alt="Go"
                     title="Submit Search Query"
-                    style={{ width: "100px", height: "90px", marginBottom: '-34px' }}
+                    style={{
+                      width: "100px",
+                      height: "90px",
+                      marginBottom: "-34px",
+                    }}
                   />
                 </div>
               </form>
@@ -393,13 +402,20 @@ function Home() {
             <div class="card mb-3">
               <div class="row no-gutters">
                 <div class="col-md-5">
-                  <img style={{ height: '100%' }} src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg" class="card-img" alt="..." />
+                  <img
+                    style={{ height: "100%" }}
+                    src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg"
+                    class="card-img"
+                    alt="..."
+                  />
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
                     <p class="card-title">අඹ යහළුවෝ</p>
                     <p class="card-text">ටී.බී. ඉලංගරත්න</p>
-                    <button class="card-text btn btn-success w-100">Play</button>
+                    <button class="card-text btn btn-success w-100">
+                      Play
+                    </button>
                   </div>
                 </div>
               </div>
@@ -410,13 +426,20 @@ function Home() {
             <div class="card mb-3">
               <div class="row no-gutters">
                 <div class="col-md-5">
-                  <img style={{ height: '100%' }} src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg" class="card-img" alt="..." />
+                  <img
+                    style={{ height: "100%" }}
+                    src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg"
+                    class="card-img"
+                    alt="..."
+                  />
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
                     <p class="card-title">මඩොල් දූව</p>
                     <p class="card-text">මාර්ටින් වික්‍රමසිංහ</p>
-                    <button class="card-text btn btn-success w-100">Play</button>
+                    <button class="card-text btn btn-success w-100">
+                      Play
+                    </button>
                   </div>
                 </div>
               </div>
@@ -427,19 +450,25 @@ function Home() {
             <div class="card mb-3">
               <div class="row no-gutters">
                 <div class="col-md-5">
-                  <img style={{ height: '100%' }} src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg" class="card-img" alt="..." />
+                  <img
+                    style={{ height: "100%" }}
+                    src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Audio_Book_Icon_1.svg"
+                    class="card-img"
+                    alt="..."
+                  />
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
                     <p class="card-title">අපේ ගම</p>
                     <p class="card-text">මාර්ටින් වික්‍රමසිංහ</p>
-                    <button class="card-text btn btn-success w-100">Play</button>
+                    <button class="card-text btn btn-success w-100">
+                      Play
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
 
